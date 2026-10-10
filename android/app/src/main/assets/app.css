@@ -7,3 +7,5 @@
 .app-install-prompt{padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);margin:18px 0}.app-install-prompt h3{margin-top:0}.app-install-button{display:block;text-align:center;text-decoration:none;box-sizing:border-box;margin:10px 0}
 
 .web-install-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:520px;margin:10px auto;padding:14px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);font-size:13px}.web-install-banner a{color:var(--teal);font-weight:700;white-space:nowrap}@media(max-width:540px){.web-install-banner{margin:10px 16px;flex-wrap:wrap}}
+
+.weather-panel{border:1px solid var(--line);border-radius:18px;padding:16px;margin:18px 0;background:var(--card)}.weather-panel h2{margin:0 0 14px}.weather-day+ .weather-day{border-top:1px solid var(--line);margin-top:16px;padding-top:16px}.weather-summary{font-weight:600}.weather-metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px}.weather-metrics small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}

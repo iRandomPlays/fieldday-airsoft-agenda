@@ -1,10 +1,11 @@
+import {isDeveloper,authorizeDeveloper,developerDiagnostics} from '../shared/developer-tools.mjs';
 import {invitationLinks} from '../shared/invite-links.mjs';
 import {initializeApp} from 'firebase/app';
 import {getAuth,connectAuthEmulator,setPersistence,indexedDBLocalPersistence,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,sendPasswordResetEmail,sendEmailVerification,EmailAuthProvider,reauthenticateWithCredential,updatePassword,reload} from 'firebase/auth';
 import {getFirestore,connectFirestoreEmulator,doc,collection,onSnapshot} from 'firebase/firestore';
 import {firestoreService} from './social-store.mjs';
 
-export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents}){
+export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents,getDeveloperData,refreshAgenda}){
   const config=await (await fetch('./firebase-config.json',{cache:'no-store'})).json();
   const enabled=config.enabled===true&&!!config.firebase?.projectId&&!!config.firebase?.apiKey;
   let auth,db,service,user=null,profile=null,groups=[],current=null,own=null,people=[],stops=[],accountStop=null,groupsStop=null,busy=false,continuation=null,requestIds=new Map(),lastError='',uiVersion=0,view='other',participantStop=null,participantRefresh=false;
@@ -22,7 +23,17 @@ export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents}
   function accountCard(){if(!user)return `<section class="settings social-card"><h2>Jouw Fieldday-account</h2><p>Deel speeldagen met vrienden en bewaar je groepen op je account.</p><button class="primary full" data-social="login">Inloggen</button><button class="text-btn full" data-social="register">Account maken</button></section>`;
     return `<section class="settings social-card"><h2>${esc(profile?profile.firstName+' '+profile.lastName:'Jouw account')}</h2><p>${esc(user.email)}</p>${!user.emailVerified?'<p class="warning">Verifieer je e-mailadres om een groep te maken of te reageren.</p><button class="text-btn" data-social="verify">Verificatiemail sturen</button><button class="text-btn" data-social="verified">Ik heb geverifieerd</button>':''}<button class="primary full" data-social="groups">Mijn groepen & evenementen</button><button class="text-btn full" data-social="edit-profile">Profiel & privé NABV-nummer</button><button class="text-btn full" data-social="password">Wachtwoord wijzigen</button><button class="text-btn" data-social="logout">Uitloggen</button><button class="text-btn danger" data-social="delete-account">Account verwijderen</button></section>`;
   }
+  function developerCard(){return isDeveloper(user)?'<h2>Development</h2><div class="settings"><button class="setting" data-social="developer"><span class="copy"><b>Developmentmenu</b><small>Importstatus en diagnostiek</small></span><span aria-hidden="true">›</span></button></div>':'';}
+  function diagnostics(){const {data,app}=getDeveloperData();return developerDiagnostics(data,app);}
+  async function developerMenu(){
+    await authorizeDeveloper(user,()=>auth.currentUser);
+    const report=diagnostics(),run=report.import;
+    const date=value=>value?new Date(value).toLocaleString('nl-NL'):'Onbekend';
+    const status=value=>({ok:'Geslaagd',warning:'Deels geslaagd',error:'Mislukt'}[value]||'Onbekend');
+    open(`<h2>Developmentmenu</h2><p>Fieldday ${esc(report.app.version)} · ${esc(report.app.platform)}<br>Verbinding: ${report.app.online?'Online':'Offline'}<br>Agenda opgehaald: ${esc(date(report.app.lastFetchedAt))}<br>Publicatie: ${esc(date(report.agenda.publishedAt))}</p><p>${report.agenda.events} evenementen · ${report.agenda.organizers} organisatoren</p><h3>Laatste import</h3><p>${esc(date(run?.at))} · ${esc(status(run?.status))}</p>${(run?.sources||[]).map(source=>`<article class="social-group"><b>${esc(source.name)}</b><p>${esc(status(source.status))} · ${esc(source.found??0)} evenementen</p>${source.errors.map(message=>`<p class="warning">${esc(message)}</p>`).join('')}</article>`).join('')}${run?.errors.length?'<h3>Importmeldingen</h3>'+run.errors.map(message=>`<p>${esc(message)}</p>`).join(''):''}<p id="social-error" role="alert"></p><button class="primary full" data-social="developer-refresh">Agenda opnieuw ophalen</button><button class="text-btn full" data-social="developer-copy">Diagnostiek kopiëren</button><a class="text-btn full" href="https://github.com/iRandomPlays/fieldday-airsoft-agenda/actions" target="_blank" rel="noopener">Imports op GitHub bekijken ↗</a><p class="foot">Opnieuw ophalen leest de laatste GitHub-publicatie. Imports blijven op GitHub draaien.</p>`,'developer');
+  }
   function credentials(mode='login'){
+
     if(!enabled){unavailable();return;}lastError='';
     open(`<h2>${mode==='register'?'Maak je account':mode==='reset'?'Wachtwoord vergeten':'Welkom terug'}</h2><form id="social-auth" data-mode="${mode}">${mode==='register'?'<label>Voornaam<input name="firstName" required maxlength="60" autocomplete="given-name"></label><label>Achternaam<input name="lastName" required maxlength="80" autocomplete="family-name"></label>':''}<label>E-mailadres<input name="email" type="email" required autocomplete="email"></label>${mode!=='reset'?`<label>Wachtwoord<input name="password" type="password" required ${mode==='register'?'minlength="8" autocomplete="new-password"':'autocomplete="current-password"'}></label>`:''}${mode==='register'?'<label>Wachtwoord bevestigen<input name="confirm" type="password" required minlength="8" autocomplete="new-password"></label><p class="foot">Je profiel is privé. Een NABV-nummer toevoegen en delen is optioneel.</p>':''}<p id="social-error" role="alert"></p><button class="primary full" type="submit">${mode==='register'?'Account maken':mode==='reset'?'Herstellink sturen':'Inloggen'}</button></form><button class="text-btn full" data-social="${mode==='register'?'login':'register'}">${mode==='register'?'Ik heb al een account':'Nieuw? Maak een account'}</button>${mode==='login'?'<button class="text-btn full" data-social="reset">Wachtwoord vergeten?</button>':''}`);
   }
@@ -85,6 +96,9 @@ export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents}
   });});
   document.addEventListener('click',event=>{const b=event.target.closest('[data-social]');if(!b)return;const action=b.dataset.social;event.preventDefault();run(async()=>{
     if(action==='close'){close();return;}if(['login','register','reset'].includes(action)){credentials(action);return;}
+    if(action==='developer'){await developerMenu();return;}
+    if(action==='developer-refresh'){await authorizeDeveloper(user,()=>auth.currentUser);await refreshAgenda();await developerMenu();return;}
+    if(action==='developer-copy'){await authorizeDeveloper(user,()=>auth.currentUser);await copy(JSON.stringify(diagnostics(),null,2));return;}
     if(action==='edit-profile')editProfile();if(action==='add-nabv')editProfile(()=>responseForm('yes'));
     if(action==='logout'){await signOut(auth);resetPrivate();dialog.close();profileChanged();}
     if(action==='verify'){await sendEmailVerification(user);notice('Verificatiemail verstuurd.');}
@@ -115,7 +129,7 @@ export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents}
       connectAuthEmulator(auth,'http://127.0.0.1:9099',{disableWarnings:true});connectFirestoreEmulator(db,'127.0.0.1',8080);
     }
     await setPersistence(auth,indexedDBLocalPersistence);
-    onAuthStateChanged(auth,async next=>{accountStop?.();groupsStop?.();resetPrivate();user=next;profile=null;groups=[];profileChanged();if(next){
+    onAuthStateChanged(auth,async next=>{if(view==='developer')dialog.close();accountStop?.();groupsStop?.();resetPrivate();user=next;profile=null;groups=[];profileChanged();if(next){
       accountStop=onSnapshot(doc(db,'users',next.uid),()=>refreshProfile().catch(e=>notice(error(e),true)),()=>{});
       groupsStop=onSnapshot(collection(db,'users',next.uid,'groups'),snapshot=>{groups=snapshot.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.createdAt.localeCompare(a.createdAt));profileChanged();if(current?.eventId&&view==='invite')renderInvite();if(view==='groups')groupList();},()=>notice('Groepen synchroniseren mislukt. Controleer je verbinding.',true));
       try{await refreshProfile();}catch(e){notice(error(e),true);}
@@ -124,5 +138,5 @@ export async function mountSocial({esc,notice,getEvent,profileChanged,getEvents}
   window.addEventListener('offline',()=>{people=[];if(view==='participants'){open('<h2>Geen verbinding</h2><p>Privégegevens worden verborgen. Open de uitnodiging opnieuw zodra je online bent.</p><button class="primary full" data-social="invite-back">Terug</button>');}});
   window.addEventListener('hashchange',()=>{if(validId(inviteId()))invitation(inviteId());});
   if(validId(inviteId())&&!enabled)unavailable();
-  return {accountCard,beginGroup,back:()=>{if(dialog.open){close();return true;}return false;},dataChanged:()=>{if(current?.eventId&&dialog.open&&view==='invite')renderInvite();}};
+  return {accountCard,developerCard,beginGroup,back:()=>{if(dialog.open){close();return true;}return false;},dataChanged:()=>{if(current?.eventId&&dialog.open&&view==='invite')renderInvite();}};
 }

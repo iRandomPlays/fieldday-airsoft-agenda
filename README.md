@@ -63,3 +63,9 @@ De Android-app en de [mobiele webversie](https://irandomplays.github.io/fieldday
 ## Verplichte Android-updates (1.2.0)
 
 De Android-app controleert bij starten en terugkeren de nieuwste versie via GitHub Pages. Een nieuwere versie blokkeert de app tot installatie. Een internetverbinding is hiervoor verplicht; bij een mislukte controle blijft ook de lokale agenda achter het controlescherm. Vanaf 1.2.2 downloadt Fieldday de APK zelf en opent na controles het Android-installatiescherm. Android vraagt de gebruiker om toestemming en installatiebevestiging. Oudere APKs bevatten de controle niet en moeten eenmalig handmatig bijgewerkt worden. Zie [release-instructies](android/README.md#verplichte-updates-vanaf-120).
+
+## Developmentmenu (1.2.3)
+
+De algemene bronwaarschuwing wordt niet meer boven de agenda weergegeven; fouten blijven in de importgegevens beschikbaar. Onder Profiel verschijnt Development alleen voor het ingelogde, geverifieerde Firebase-account vincentstijfs@live.nl. Openen, opnieuw ophalen en diagnostiek kopiëren controleren opnieuw het Firebase-ID-token (e-mail, verificatie en UID), ook bij een accountwissel. Het menu toont uitsluitend openbare importdiagnostiek en verleent geen extra database- of GitHub-rechten. De bestaande Firestore-beveiliging blijft gelden.
+
+Het menu toont appversie, verbinding, ophaal-/publicatietijd, importstatus en fouten per organisator. Agenda opnieuw ophalen leest GitHub Pages; de import zelf blijft op GitHub draaien. Diagnostiek kopiëren bevat geen profiel, NABV-nummer, accounttoken of uitnodiging.

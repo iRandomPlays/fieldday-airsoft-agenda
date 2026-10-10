@@ -1,6 +1,6 @@
 # Fieldday Airsoft Agenda
 
-Zelfstandige mobiele webapp. GitHub Actions verzamelt de informatie, GitHub Pages serveert de app en een JSON-bestand. Geen draaiende pc, eigen server, Firebase, cloud-OCR-account of geheime sleutel nodig.
+Zelfstandige mobiele webapp. GitHub Actions verzamelt de informatie, GitHub Pages serveert de app en een JSON-bestand. Geen draaiende pc of eigen server nodig. De openbare agenda gebruikt GitHub; optionele accounts en vriendengroepen gebruiken Firebase Authentication en Firestore op het gratis Spark-plan, zonder betaalmiddel.
 
 ## Android-app
 
@@ -41,7 +41,7 @@ Lokale server alleen voor ontwikkeling op http://127.0.0.1:8787. De online app g
 
 ## Kosten en scope
 
-Standaard GitHub Actions-runners voor een openbare repository hebben geen minutentarief. Opslag, Pages-limieten en voorwaarden blijven gelden. Geen betaalde API gebruikt. Vier organisatoren aangesloten; nog zes nodig om tien organisaties echt te meten. De calculator is een indicatie voor een priverepository met 2.000 Linux-minuten en niet de gemeten looptijd van tien websites.
+Standaard GitHub Actions-runners voor een openbare repository hebben geen minutentarief. Opslag, Pages-limieten en voorwaarden blijven gelden. Geen betaalde API gebruikt. Negen organisatoren aangesloten. De calculator is een indicatie voor een priverepository met 2.000 Linux-minuten en niet de gemeten looptijd van tien websites.
 
 ## Aangesloten bronnen
 
@@ -55,3 +55,7 @@ Airsoften.be importeert iedere gepubliceerde kalenderdag afzonderlijk. Een verme
 De import leest de openbare Briq-bookingwidget op de officiële Unit 13-website. Alleen open airsoftgames worden opgenomen; privéarrangementen, jeugdactiviteiten, schietbaan en lasergamen worden uitgesloten. Het script vraagt maximaal twaalf maanden vooruit op, maar neemt uitsluitend daadwerkelijk beschikbare datums uit de respons over (de boekingshorizon kan korter zijn). Prijzen komen per datum uit de kalender. Er wordt niet op basis van terugkerende weekdagen gegokt.
 
 Alleen de twee uitleesverzoeken OrderItems en Booking/Dates worden gedaan. Er wordt geen boeking aangemaakt of ticket vastgehouden. Een willekeurige openbare widgetsessie is voldoende; geen account of API-sleutel nodig. Starttijden zijn pas onderdeel van de verdere boeking en worden niet verzonnen. Een lege of mislukte bron houdt eerdere gegevens ter controle in stand.
+
+## Accounts en vriendengroepen (1.1.0)
+
+De Android-app en de [mobiele webversie](https://irandomplays.github.io/fieldday-airsoft-agenda/social/) ondersteunen accounts, privéprofielen en groepsuitnodigingen. De openbare agenda blijft zonder account beschikbaar. Zie [architectuur, privacy, installatie en tests](firebase/README.md).

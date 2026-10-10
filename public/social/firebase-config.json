@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "firebase": {
+    "projectId": "fieldday-airsoft-irandomplays",
+    "appId": "1:196515470483:web:e6226f3fcdb1b0b7724166",
+    "storageBucket": "fieldday-airsoft-irandomplays.firebasestorage.app",
+    "apiKey": "AIzaSyCOyIovUpGmoKFjsPibPKtu6mwNYfof-1Q",
+    "authDomain": "fieldday-airsoft-irandomplays.firebaseapp.com",
+    "messagingSenderId": "196515470483",
+    "projectNumber": "196515470483",
+    "version": "2"
+  },
+  "webUrl": "https://irandomplays.github.io/fieldday-airsoft-agenda/social/"
+}

@@ -14,3 +14,7 @@ outputs/*.apk
 outputs/*.png
 
 outputs/*.idsig
+data/firebase-emulators/
+*-debug.log
+firebase/functions/.env*
+.firebase/

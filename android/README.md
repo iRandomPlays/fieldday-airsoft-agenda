@@ -4,13 +4,15 @@ Installeerbare testversie voor Android 8.0 en hoger:
 
 [Download Fieldday.apk](https://irandomplays.github.io/fieldday-airsoft-agenda/downloads/Fieldday.apk)
 
-Open de download op je Android-telefoon. Als Android daarom vraagt, sta installatie vanuit je browser toe. De app vereist geen account, eigen server of draaiende pc.
+Open de download op je Android-telefoon. Als Android daarom vraagt, sta installatie vanuit je browser toe. Evenementen bekijken vereist geen account. Vriendengroepen vereisen een account. Een eigen server of draaiende pc is niet nodig.
 
 Versie 1.0.1 voegt Helenaveen toe aan de kaart en het Nederland-filter. Rush Battle Arena wordt via GitHub automatisch geïmporteerd; de vorige APK toont de nieuwe evenementen ook in de agenda na verversen.
 
 Versie 1.0.2 voegt Fort Barchon, Antwerpen, Peer en Blackwood toe aan de kaart. Airsoften.be, Antwerp Airsoft en Airborne Events worden via GitHub geïmporteerd. Regiofilters gebruiken waar beschikbaar het land uit de evenementgegevens.
 
 Versie 1.0.3 voegt Nuth toe aan de kaart. Unit 13 publiceert beschikbare datums via zijn openbare Briq-widget; de app toont één agenda-item per beschikbaar gepubliceerde datum. Starttijden worden bij Unit 13 gekozen en niet geschat.
+
+Versie 1.1.0 voegt registratie, e-mailverificatie, privéprofielen met optioneel NABV-nummer en vriendengroepen toe. Deelnemers kunnen reageren; de groepsorganisator beheert de afzonderlijke officiële aanmeldstatus. NABV-inzage en doorgifte vragen afzonderlijke toestemming. [Techniek en beveiliging](../firebase/README.md).
 
 ## Functies
 
@@ -25,7 +27,7 @@ GitHub Actions blijft de organisatoren verzamelen; de APK importeert geen organi
 
 ## Techniek en bouwen
 
-De vier schermen zijn gebundelde HTML/CSS/JavaScript in een Android WebView met een Java Activity. De app laadt de interface uit de APK en gegevens via HTTPS. Er staat geen GitHub-token in de app. Alleen netwerkpermissies; geen GPS, camera of gebruikersaccount. Externe evenementlinks openen de browser. De kaart gebruikt Leaflet en OpenStreetMap, zonder downloads van hele gebieden.
+De vier schermen zijn gebundelde HTML/CSS/JavaScript in een Android WebView met een Java Activity. De app laadt de interface uit de APK en gegevens via HTTPS. Er staat geen GitHub-token in de app. Alleen netwerkpermissies; geen GPS of camera. Accounts gebruiken Firebase Authentication. Externe evenementlinks openen de browser. De kaart gebruikt Leaflet en OpenStreetMap, zonder downloads van hele gebieden.
 
 Broncode: `app/src/main`. De HTTPS-assets worden via `shouldInterceptRequest` uit Android AssetManager geserveerd. Bestandstoegang is uitgeschakeld; CSP beperkt scripts tot meegeleverde bestanden.
 
@@ -46,7 +48,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-31 geautomatiseerde tests geslaagd, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+44 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 

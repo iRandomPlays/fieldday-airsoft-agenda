@@ -45,5 +45,5 @@ Standaard GitHub Actions-runners voor een openbare repository hebben geen minute
 
 ## Aangesloten bronnen
 
-GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id) en Crimi Events (openbare agenda-API). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.
+GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id) Crimi Events (openbare agenda-API) en Rush Battle Arena (alle evenementkaarten in de paginabron, inclusief latere maanden). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.
 

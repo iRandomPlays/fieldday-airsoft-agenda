@@ -6,6 +6,8 @@ Installeerbare testversie voor Android 8.0 en hoger:
 
 Open de download op je Android-telefoon. Als Android daarom vraagt, sta installatie vanuit je browser toe. De app vereist geen account, eigen server of draaiende pc.
 
+Versie 1.0.1 voegt Helenaveen toe aan de kaart en het Nederland-filter. Rush Battle Arena wordt via GitHub automatisch geïmporteerd; de vorige APK toont de nieuwe evenementen ook in de agenda na verversen.
+
 ## Functies
 
 - Agenda met zoeken, datum- en organisatorfilters, weekendfilter en beschikbaarheid.
@@ -40,7 +42,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-18 geautomatiseerde tests geslaagd, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+21 geautomatiseerde tests geslaagd, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 

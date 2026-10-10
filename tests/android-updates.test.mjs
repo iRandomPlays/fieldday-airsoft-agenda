@@ -36,3 +36,17 @@ test('Gepubliceerde updategegevens passen bij de meegeleverde APK en appversie',
  assert.equal(release.sha256,createHash('sha256').update(readFileSync('public/downloads/Fieldday.apk')).digest('hex'));
  assert.equal(release.apkUrl,'https://irandomplays.github.io/fieldday-airsoft-agenda/downloads/Fieldday.apk?v='+release.versionCode);
 });
+
+test('APK-download controleert hash, omvang, onderbreking en ondertekenaar voor installatie',t=>{
+ const home=process.env.JAVA_HOME||(process.platform==='win32'?'C:/Program Files/Android/Android Studio/jbr':null);
+ const javac=home?path.join(home,'bin',process.platform==='win32'?'javac.exe':'javac'):'javac',java=home?path.join(home,'bin',process.platform==='win32'?'java.exe':'java'):'java';
+ if(spawnSync(javac,['-version']).error){t.skip('JDK vereist voor APK-downloadtest.');return;}
+ const base=path.resolve('android/build');mkdirSync(base,{recursive:true});const temp=mkdtempSync(path.join(base,'apk-test-'));
+ try{const compile=spawnSync(javac,['-d',temp,'android/app/src/main/java/nl/fieldday/app/ApkDownload.java','tests/ApkDownloadTest.java'],{encoding:'utf8'});assert.equal(compile.status,0,compile.stderr);
+ const run=spawnSync(java,['-cp',temp,'ApkDownloadTest',temp],{encoding:'utf8'});assert.equal(run.status,0,run.stderr);assert.match(run.stdout,/identiteitscontroles geslaagd/);
+ }finally{if(!temp.startsWith(base+path.sep))throw Error('Ongeldige testmap.');rmSync(temp,{recursive:true,force:true});}
+});
+test('APK-overdracht gebruikt een niet-openbare provider met alleen tijdelijke leesrechten',()=>{
+ const manifest=readFileSync('android/app/src/main/AndroidManifest.xml','utf8');
+ assert.ok(manifest.includes('android.permission.REQUEST_INSTALL_PACKAGES'));assert.ok(manifest.includes('android:name=".UpdateApkProvider" android:authorities="nl.fieldday.app.updates" android:exported="false" android:grantUriPermissions="true"'));assert.ok(manifest.includes('<grant-uri-permission android:path="/release.apk"/>'));assert.ok(!manifest.includes('android.permission.WRITE_EXTERNAL_STORAGE'));
+});

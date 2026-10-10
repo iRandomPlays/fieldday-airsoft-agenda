@@ -48,7 +48,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-52 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+54 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 
@@ -61,10 +61,16 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 Bij starten en terugkeer naar de app controleert een native scherm `public/app-update.json` via HTTPS op GitHub Pages. Elke hogere versiecode is verplicht. De interface blijft geblokkeerd tijdens controle, bij netwerkfouten en zolang een bekende update niet is geïnstalleerd. Er is geen oversla-knop. Dit betekent dat ook de eerder offline beschikbare agenda pas na een succesvolle onlinecontrole geopend kan worden. Accounts en voorkeuren blijven behouden bij installeren met dezelfde app-id en ondertekeningssleutel.
 
-De updateknop opent de APK-download in de browser. De gebruiker opent het gedownloade bestand en bevestigt de Android-installatie. De app installeert niets stilzwijgend. Versies vóór 1.2.0 moeten eenmalig handmatig worden bijgewerkt; zij bevatten deze controle nog niet.
+Vanaf 1.2.2 downloadt de updateknop de APK binnen Fieldday, toont voortgang en controleert SHA256, pakketnaam, versie en het ondertekeningscertificaat. Daarna opent de app rechtstreeks het Android-installatiescherm. Android vraagt zo nodig eenmalig toestemming voor installaties vanuit Fieldday; na terugkeer gaat de app verder. De gebruiker bevestigt de installatie. Annuleren heft de updateplicht niet op. De app installeert niets stilzwijgend. Versies vóór 1.2.0 moeten eenmalig handmatig worden bijgewerkt; zij bevatten deze controle nog niet.
 
 Voor elke release: verhoog `versionCode` en `versionName` in AndroidManifest.xml en de zichtbare versie in app.js, bundel de webassets, bouw met dezelfde sleutel, voer de tests uit en draai `node tools/publish-android-update.mjs`. Stel eventueel `ANDROID_HOME` in op de SDK-map. Dit script controleert APK-versie versus manifest en schrijft APK plus update-JSON met SHA256. Commit en publiceer **beide in dezelfde Pages-deployment**. Publiceer nooit alleen de versie-JSON vóór de APK. Er is geen Firebase-verbruik of betaalde dienst voor deze controle.
 
 ## Uitnodigingen openen (1.2.1)
 
 Gedeelde HTTPS-links gebruiken nu het geverifieerde domein `fieldday-airsoft-irandomplays.web.app/invite/…`. Android opent de actuele Fieldday-app wanneer de domeinkoppeling actief is. Zonder app volgt de webuitnodiging met downloadverzoek. De knop “Ik heb de app” vangt browsers op die App Links niet doorgeven. De bestaande fieldday://-koppeling blijft bestaan. Hosting is op Spark zonder betaalmiddel ingericht. Zie [configuratie en beperkingen](../firebase/README.md#uitnodigingslinks-vanaf-121). Op een echte Android-telefoon nog controleren met `adb shell pm verify-app-links --re-verify nl.fieldday.app` en `adb shell pm get-app-links nl.fieldday.app`, daarna een gedeelde link in WhatsApp openen met en zonder de app.
+
+## Downloaden binnen de app (1.2.2)
+
+Geen browser of externe opslagpermissie nodig voor volgende updates. De download staat in de privémap van de app en wordt pas na volledige controle aan de Android-installer aangeboden. Een niet-openbare ContentProvider deelt uitsluitend de update-APK met tijdelijke leesrechten. Downloads boven 100 MB, lege/onvolledige bestanden en verkeerde hashes worden geweigerd; gedeeltelijke bestanden worden opgeruimd. Netwerk-/opslagfouten tonen opnieuw proberen en versiegegevens vernieuwen. Na annuleren is de gecontroleerde download opnieuw te installeren. Als Android de app tijdens het downloaden beëindigt, start de gebruiker de download opnieuw. Een ontvangen uitnodiging blijft bewaard tijdens de verplichte update en wordt na opnieuw openen hervat.
+
+De upgrade naar 1.2.2 gaat nog via de browserknop van de oude APK; alleen een nieuw geïnstalleerde APK kan de nieuwe downloader uitvoeren. Het download-/controlepad is op JVM getest en de APK is gebouwd en ondertekend. De echte Android-toestemming, content-URI en installerflow zijn nog op een toestel te controleren. Er is momenteel geen Android-toestel of bruikbaar emulatorimage aangesloten.

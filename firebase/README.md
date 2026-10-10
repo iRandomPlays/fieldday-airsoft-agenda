@@ -23,9 +23,15 @@ NABV-inzage en doorgifte aan het airsoftveld zijn afzonderlijke keuzes. Export b
 
 Privénummers worden niet in lokale persistente databaseopslag gezet. Deelnemerslijsten worden verborgen bij verbindingsverlies en als de app naar de achtergrond gaat. De database gebruikt transacties voor reacties en aantallen. Acties worden pas bevestigd na serverbevestiging. Account verwijderen vraagt recente herauthenticatie en ruimt profiel, nummer, reacties en eigen groepen op vóór Authentication-verwijdering. Bij onderbroken opruiming kan de gebruiker het verwijderen opnieuw uitvoeren; Spark heeft hiervoor geen achtergrondworker.
 
-## Uitnodigingslinks
+## Uitnodigingslinks (vanaf 1.2.1)
 
-Links gebruiken `https://irandomplays.github.io/fieldday-airsoft-agenda/social/#invite=<token>`. De token staat in het fragment en wordt niet als URL-pad/query naar de webserver gestuurd. Zonder app opent de uitnodiging in de browser. De Android-knop gebruikt een intent-link naar `fieldday://invite/<token>` met webfallback. Dit is een expliciete knop, geen geverifieerde HTTPS Android App Link. Het profiel en de uitnodiging werken met hetzelfde Firebase-account in browser en app. De evenementinformatie komt uit de bestaande GitHub-feed; een uit die feed verwijderd evenement kan geen volledige details meer tonen.
+Nieuwe gedeelde links gebruiken `https://fieldday-airsoft-irandomplays.web.app/invite/<token>`. Android App Links verifieert dit domein aan de hand van `firebase/hosting/.well-known/assetlinks.json`, het apppakket en de publieke SHA256-fingerprint van de huidige ondertekeningssleutel. Het Android-manifest heeft een autoVerify-filter uitsluitend voor HTTPS en /invite/. Behoud bij nieuwe APKs dezelfde sleutel; bij een toekomstige andere release-/Play-sleutel moet de associatie aangepast worden.
+
+Met de actuele app geïnstalleerd en Android-linkverificatie ingeschakeld kan de link rechtstreeks naar de uitnodiging in Fieldday gaan. Zonder app opent de kleine statische Hosting-pagina en verwijst door naar de bestaande GitHub-webuitnodiging, met dezelfde token in het fragment. De webversie toont een installatieverzoek en APK-downloadknop, plus een expliciete knop om de app te openen als een ingebouwde browser de App Link tegenhoudt. De browser beweert niet te kunnen vaststellen welke apps geïnstalleerd zijn. De gebruiker kan ook via het web reageren. Na installatie opent hij dezelfde uitnodigingslink opnieuw. Er wordt geen deferred-install- of trackingdienst gebruikt.
+
+Bestaande GitHub-links en fieldday://-links blijven bruikbaar. De bestaande APK 1.2.0 krijgt 1.2.1 via de verplichte updatecontrole; oudere APKs moeten handmatig bijgewerkt worden. De domeinverificatie vereist een eenmalige internetverbinding op het toestel. Android-instellingen en ingebouwde browsers kunnen automatisch openen tegenhouden; daarom blijft de handmatige openknop bestaan.
+
+Firebase Hosting gebruikt het bestaande Spark-project, zonder betaalmiddel of Cloud Functions. Alleen de gateway, CSS/JS en domeinassociatie worden daar gehost. Evenementgegevens, webapp en APK blijven op GitHub. De uitnodigingstoken kan bij webfallback in Hosting-verzoeken voorkomen; er worden geen NABV- of profielgegevens in de URL opgenomen en de gateway verstuurt geen referrer. Publiceren: `npx firebase deploy --only hosting --project fieldday-airsoft-irandomplays`. Gratis Hosting-quota gelden; geen automatische betaalde uitbreiding.
 
 ## Bouwen en controleren
 

@@ -48,7 +48,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-48 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+52 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 
@@ -64,3 +64,7 @@ Bij starten en terugkeer naar de app controleert een native scherm `public/app-u
 De updateknop opent de APK-download in de browser. De gebruiker opent het gedownloade bestand en bevestigt de Android-installatie. De app installeert niets stilzwijgend. Versies vóór 1.2.0 moeten eenmalig handmatig worden bijgewerkt; zij bevatten deze controle nog niet.
 
 Voor elke release: verhoog `versionCode` en `versionName` in AndroidManifest.xml en de zichtbare versie in app.js, bundel de webassets, bouw met dezelfde sleutel, voer de tests uit en draai `node tools/publish-android-update.mjs`. Stel eventueel `ANDROID_HOME` in op de SDK-map. Dit script controleert APK-versie versus manifest en schrijft APK plus update-JSON met SHA256. Commit en publiceer **beide in dezelfde Pages-deployment**. Publiceer nooit alleen de versie-JSON vóór de APK. Er is geen Firebase-verbruik of betaalde dienst voor deze controle.
+
+## Uitnodigingen openen (1.2.1)
+
+Gedeelde HTTPS-links gebruiken nu het geverifieerde domein `fieldday-airsoft-irandomplays.web.app/invite/…`. Android opent de actuele Fieldday-app wanneer de domeinkoppeling actief is. Zonder app volgt de webuitnodiging met downloadverzoek. De knop “Ik heb de app” vangt browsers op die App Links niet doorgeven. De bestaande fieldday://-koppeling blijft bestaan. Hosting is op Spark zonder betaalmiddel ingericht. Zie [configuratie en beperkingen](../firebase/README.md#uitnodigingslinks-vanaf-121). Op een echte Android-telefoon nog controleren met `adb shell pm verify-app-links --re-verify nl.fieldday.app` en `adb shell pm get-app-links nl.fieldday.app`, daarna een gedeelde link in WhatsApp openen met en zonder de app.

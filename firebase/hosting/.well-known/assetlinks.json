@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "nl.fieldday.app",
+      "sha256_cert_fingerprints": [
+        "A0:C0:E6:E2:3D:E1:F2:8E:8C:F0:F1:66:ED:CF:59:DA:51:94:FF:0F:36:40:A8:48:D5:D1:0A:D3:EA:E3:C3:C3"
+      ]
+    }
+  }
+]

@@ -43,7 +43,7 @@ test('Detailpagina rendert het juiste weer en opent een ingevulde agenda op Andr
  const source=readFileSync('android/app/src/main/assets/app.js','utf8');const functions=source.slice(source.indexOf('async function loadWeather('),source.indexOf('async function refresh('));
  const info={innerHTML:''},dialog={opened:false,showModal(){this.opened=true;}},panel={isConnected:true,innerHTML:''};let payload;
  const context=createContext({weatherService:async()=>({state:'ready',days:[{date:'2026-10-18',code:3,min:8,max:15,rainChance:25,rain:1,wind:20}],at:now.getTime()}),
-  weatherLabel,calendarEvent,googleCalendarUrl,calendarIcs,Intl,Date,esc:s=>String(s??''),long:d=>d,data:{events:[base]},navigator:{userAgent:'FielddayAndroid'},
+  weatherLabel,calendarEvent,googleCalendarUrl,calendarIcs,platformInfo:()=>({ios:false}),Intl,Date,esc:s=>String(s??''),long:d=>d,data:{events:[base]},navigator:{userAgent:'FielddayAndroid'},
   $:s=>s==='#info-body'?info:dialog,prompt:(name,body)=>{assert.equal(name,'fieldday:calendar');payload=JSON.parse(body);return 'ok';},notice:()=>assert.fail('Onverwachte fout')});
  runInContext(functions,context);await context.loadWeather(base,panel);assert.match(panel.innerHTML,/2026-10-18/);assert.match(panel.innerHTML,/25%/);assert.match(panel.innerHTML,/Open-Meteo/);
  const gone={isConnected:false,innerHTML:'oud'};await context.loadWeather(base,gone);assert.equal(gone.innerHTML,'oud');

@@ -24,7 +24,7 @@ test('Profielmenu en acties volgen login, verificatie, accountwissel en logout',
   const {readFileSync}=await import('node:fs');const {createContext,runInContext}=await import('node:vm');
   const callbacks={},body={innerHTML:'',replaceChildren(){this.innerHTML='';}},dialog={open:false,querySelectorAll:()=>[],showModal(){this.open=true;},close(){this.open=false;},addEventListener(){}};
   const auth={currentUser:null};let authChanged,copied='',refreshes=0;
-  const context=createContext({isDeveloper,authorizeDeveloper,developerDiagnostics,
+  const context=createContext({isDeveloper,authorizeDeveloper,developerDiagnostics,platformInfo:()=>({native:true,standalone:false}),IOS_INSTALL_HELP:'',
     document:{body:{append(){}},createElement:()=>dialog,addEventListener:(name,fn)=>callbacks[name]=fn,querySelector:s=>s==='#social-body'?body:null},
     navigator:{userAgent:'FielddayAndroid'},location:{hash:'',hostname:'appassets.androidplatform.net'},window:{addEventListener(){}},
     fetch:async()=>({json:async()=>({enabled:true,firebase:{projectId:'test',apiKey:'test'}})}),

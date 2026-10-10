@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['android/**', 'shared/**', 'firebase/**', 'firebase.json', 'tests/**', 'lib/android-release.mjs', 'tools/publish-android-update.mjs', 'tools/build-social.mjs', 'package*.json', '.github/workflows/social-checks.yml']
+    paths: ['android/**', 'shared/**', 'firebase/**', 'firebase.json', 'tests/**', 'lib/android-release.mjs', 'tools/publish-android-update.mjs', 'tools/build-social.mjs', 'tools/build-pwa.mjs', 'tools/pwa-worker.template.js', 'tools/build-calendars.mjs', 'package*.json', '.github/workflows/social-checks.yml']
   pull_request:
-    paths: ['android/**', 'shared/**', 'firebase/**', 'firebase.json', 'tests/**', 'lib/android-release.mjs', 'tools/publish-android-update.mjs', 'tools/build-social.mjs', 'package*.json']
+    paths: ['android/**', 'shared/**', 'firebase/**', 'firebase.json', 'tests/**', 'lib/android-release.mjs', 'tools/publish-android-update.mjs', 'tools/build-social.mjs', 'tools/build-pwa.mjs', 'tools/pwa-worker.template.js', 'tools/build-calendars.mjs', 'package*.json']
 permissions:
   contents: read
 jobs:

@@ -12,6 +12,9 @@ on:
       - 'tests/**'
       - 'package*.json'
       - 'import.mjs'
+      - 'tools/build-calendars.mjs'
+      - 'tools/build-pwa.mjs'
+      - 'tools/pwa-worker.template.js'
       - '.github/workflows/import.yml'
 permissions:
   contents: read
@@ -53,6 +56,8 @@ jobs:
       - name: Importwaarschuwing
         if: steps.import.outcome == 'failure'
         run: echo '::warning::Import mislukt; bestaande agenda en foutmelding worden gepubliceerd.'
+      - name: Agendabestanden voor Apple Agenda publiceren
+        run: node tools/build-calendars.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public

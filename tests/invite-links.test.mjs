@@ -1,3 +1,4 @@
+import {runInNewContext} from 'node:vm';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -15,6 +16,9 @@ test('Android-verificatie en Hosting wijzen naar hetzelfde domein en apppakket',
  const config=JSON.parse(readFileSync('firebase.json','utf8'));assert.equal(config.hosting.public,'firebase/hosting');assert.ok(config.hosting.rewrites.some(r=>r.source==='/invite/**'));assert.ok(!config.hosting.ignore.includes('**/.*'));
 });
 test('Hosting-fallback bewaart de token, toont download en weigert externe paden',()=>{
- const script=readFileSync('firebase/hosting/invite.js','utf8');assert.ok(script.includes('([a-f0-9]{64})'));assert.ok(script.includes('location.replace(web)'));assert.ok(script.includes(WEB_APP+'#invite='));
+ const script=readFileSync('firebase/hosting/invite.js','utf8');
+ function visit(pathname){const nodes=Object.fromEntries(['web','open-app','message'].map(name=>[name,{hidden:true}]));let target;runInNewContext(script,{location:{pathname,replace:value=>target=value},document:{getElementById:name=>nodes[name]},encodeURIComponent});return {nodes,target};}
+ const page=visit('/invite/'+id);assert.equal(page.target,WEB_APP+'#invite='+id);assert.equal(page.nodes.web.href,page.target);assert.equal(page.nodes.web.hidden,false);assert.ok(page.nodes['open-app'].href.includes(encodeURIComponent(page.target)));
+ for(const path of ['/invite/short','/invite/'+id+'/extra','/invite/https://evil.test']){const invalid=visit(path);assert.equal(invalid.target,undefined);assert.match(invalid.nodes.message.textContent,/ongeldig/);}
  const html=readFileSync('firebase/hosting/index.html','utf8');assert.ok(html.includes('Android-app downloaden'));assert.ok(html.includes('no-referrer'));
 });

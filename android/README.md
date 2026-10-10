@@ -10,6 +10,8 @@ Versie 1.0.1 voegt Helenaveen toe aan de kaart en het Nederland-filter. Rush Bat
 
 Versie 1.0.2 voegt Fort Barchon, Antwerpen, Peer en Blackwood toe aan de kaart. Airsoften.be, Antwerp Airsoft en Airborne Events worden via GitHub geïmporteerd. Regiofilters gebruiken waar beschikbaar het land uit de evenementgegevens.
 
+Versie 1.0.3 voegt Nuth toe aan de kaart. Unit 13 publiceert beschikbare datums via zijn openbare Briq-widget; de app toont één agenda-item per beschikbaar gepubliceerde datum. Starttijden worden bij Unit 13 gekozen en niet geschat.
+
 ## Functies
 
 - Agenda met zoeken, datum- en organisatorfilters, weekendfilter en beschikbaarheid.
@@ -44,7 +46,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-27 geautomatiseerde tests geslaagd, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+31 geautomatiseerde tests geslaagd, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 

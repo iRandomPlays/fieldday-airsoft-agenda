@@ -49,3 +49,9 @@ GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide o
 
 
 Airsoften.be importeert iedere gepubliceerde kalenderdag afzonderlijk. Een vermelding van een terrein zonder datums levert geen verzonnen speeldagen op. Airborne gebruikt het expliciete bronjaar van de bijbehorende terreinagenda of evenementbeschrijving; accessoires en eten tellen niet als entreeticket. Antwerp bewaart de lokale tijden zoals de organisator ze publiceert, ook wanneer de API een afwijkende tijdzone noemt.
+
+## Unit 13 in Nuth
+
+De import leest de openbare Briq-bookingwidget op de officiële Unit 13-website. Alleen open airsoftgames worden opgenomen; privéarrangementen, jeugdactiviteiten, schietbaan en lasergamen worden uitgesloten. Het script vraagt maximaal twaalf maanden vooruit op, maar neemt uitsluitend daadwerkelijk beschikbare datums uit de respons over (de boekingshorizon kan korter zijn). Prijzen komen per datum uit de kalender. Er wordt niet op basis van terugkerende weekdagen gegokt.
+
+Alleen de twee uitleesverzoeken OrderItems en Booking/Dates worden gedaan. Er wordt geen boeking aangemaakt of ticket vastgehouden. Een willekeurige openbare widgetsessie is voldoende; geen account of API-sleutel nodig. Starttijden zijn pas onderdeel van de verdere boeking en worden niet verzonnen. Een lege of mislukte bron houdt eerdere gegevens ter controle in stand.

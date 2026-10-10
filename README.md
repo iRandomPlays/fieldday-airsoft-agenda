@@ -38,3 +38,7 @@ Lokale server alleen voor ontwikkeling op http://127.0.0.1:8787. De online app g
 ## Kosten en scope
 
 Standaard GitHub Actions-runners voor een openbare repository hebben geen minutentarief. Opslag, Pages-limieten en voorwaarden blijven gelden. Geen betaalde API gebruikt. Eén organisator aangesloten; nog negen nodig om tien organisaties echt te meten. De calculator is een indicatie voor een priverepository met 2.000 Linux-minuten en niet de gemeten looptijd van tien websites.
+
+## Aangesloten bronnen
+
+GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id) en Crimi Events (openbare agenda-API). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.

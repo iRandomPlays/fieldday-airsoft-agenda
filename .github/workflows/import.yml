@@ -1,0 +1,71 @@
+name: Importeren en publiceren
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'public/**'
+      - '!public/data/**'
+      - 'lib/**'
+      - 'tests/**'
+      - 'package*.json'
+      - 'import.mjs'
+      - '.github/workflows/import.yml'
+permissions:
+  contents: read
+concurrency:
+  group: fieldday-publish
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: OCR-taalmodel herstellen
+        uses: actions/cache@v4
+        with:
+          path: data/ocr-models
+          key: ocr-english-tesseract-v7
+      - run: node --test
+      - name: Websites controleren en agenda opbouwen
+        id: import
+        continue-on-error: true
+        run: node import.mjs
+      - name: Laatste gegevens duurzaam bewaren
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/state.json data/ocr-cache.json public/data/events.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update evenementgegevens'
+            git push
+          fi
+      - name: Importwaarschuwing
+        if: steps.import.outcome == 'failure'
+        run: echo '::warning::Import mislukt; bestaande agenda en foutmelding worden gepubliceerd.'
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+  deploy:
+    needs: import
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publiceer zelfstandige app
+        id: deployment
+        uses: actions/deploy-pages@v4

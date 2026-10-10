@@ -1,0 +1,9 @@
+data/*.html
+data/*.tmp
+data/ocr/
+data/ocr-models/
+data/ocr-*.mjs
+data/events-export.json
+node_modules/
+.env
+data/migrate-*.mjs

@@ -2,6 +2,10 @@
 
 Zelfstandige mobiele webapp. GitHub Actions verzamelt de informatie, GitHub Pages serveert de app en een JSON-bestand. Geen draaiende pc, eigen server, Firebase, cloud-OCR-account of geheime sleutel nodig.
 
+## Android-app
+
+[Download de Android APK](https://irandomplays.github.io/fieldday-airsoft-agenda/downloads/Fieldday.apk) · [Functies en bouwinstructies](android/README.md). Android 8.0+, vier tabbladen en dezelfde GitHub-agenda. Ontwikkelondertekende testversie; nog niet op een Android-toestel getest.
+
 ## Online
 
 https://irandomplays.github.io/fieldday-airsoft-agenda/
@@ -42,3 +46,4 @@ Standaard GitHub Actions-runners voor een openbare repository hebben geen minute
 ## Aangesloten bronnen
 
 GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id) en Crimi Events (openbare agenda-API). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.
+

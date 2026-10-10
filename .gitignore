@@ -7,3 +7,10 @@ data/events-export.json
 node_modules/
 .env
 data/migrate-*.mjs
+
+android/build/
+data/*.keystore
+outputs/*.apk
+outputs/*.png
+
+outputs/*.idsig

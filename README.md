@@ -59,3 +59,7 @@ Alleen de twee uitleesverzoeken OrderItems en Booking/Dates worden gedaan. Er wo
 ## Accounts en vriendengroepen (1.1.0)
 
 De Android-app en de [mobiele webversie](https://irandomplays.github.io/fieldday-airsoft-agenda/social/) ondersteunen accounts, privéprofielen en groepsuitnodigingen. De openbare agenda blijft zonder account beschikbaar. Zie [architectuur, privacy, installatie en tests](firebase/README.md).
+
+## Verplichte Android-updates (1.2.0)
+
+De Android-app controleert bij starten en terugkeren de nieuwste versie via GitHub Pages. Een nieuwere versie blokkeert de app tot installatie. Een internetverbinding is hiervoor verplicht; bij een mislukte controle blijft ook de lokale agenda achter het controlescherm. De update wordt door de gebruiker via de browser gedownload en in Android bevestigd. Oudere APKs bevatten de controle niet en moeten eenmalig handmatig bijgewerkt worden. Zie [release-instructies](android/README.md#verplichte-updates-vanaf-120).

@@ -48,7 +48,7 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 
 ## Controle van deze versie
 
-44 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
+48 geautomatiseerde tests geslaagd, plus twee integratietests met Firebase Auth en Firestore-emulators, inclusief importdatums, meerdaagse events, filters en favorieten. De vier tabbladen, kaartzoekfunctie, evenementdetails en blijvende favorieten zijn gecontroleerd in een mobiele browserpreview. De APK is gebouwd en de v2/v3-handtekening geverifieerd. Starten op een echte telefoon of werkende Android-emulator is nog niet getest: de aanwezige emulator heeft geen geïnstalleerd systeemimage.
 
 ## Assets en licenties
 
@@ -56,3 +56,11 @@ Een publicatie vervangt `public/downloads/Fieldday.apk` door de gebouwde APK en 
 - Barlow Condensed Black: SIL Open Font License, zie `app/src/main/assets/font-OFL.txt`.
 - Het algemene bos/airsoft-sfeerbeeld `field-cover.png` is gegenereerd met OpenAI ImageGen voor deze app. Het beeld stelt geen specifieke locatie voor. Evenementposters komen uit de openbare brongegevens van de organisatoren.
 - OpenStreetMap-kaarttegels en attributie: https://www.openstreetmap.org/copyright . Kaartposities zijn benaderingen van plaatsen, geen gecontroleerde ingangen of exacte speelvelden.
+
+## Verplichte updates vanaf 1.2.0
+
+Bij starten en terugkeer naar de app controleert een native scherm `public/app-update.json` via HTTPS op GitHub Pages. Elke hogere versiecode is verplicht. De interface blijft geblokkeerd tijdens controle, bij netwerkfouten en zolang een bekende update niet is geïnstalleerd. Er is geen oversla-knop. Dit betekent dat ook de eerder offline beschikbare agenda pas na een succesvolle onlinecontrole geopend kan worden. Accounts en voorkeuren blijven behouden bij installeren met dezelfde app-id en ondertekeningssleutel.
+
+De updateknop opent de APK-download in de browser. De gebruiker opent het gedownloade bestand en bevestigt de Android-installatie. De app installeert niets stilzwijgend. Versies vóór 1.2.0 moeten eenmalig handmatig worden bijgewerkt; zij bevatten deze controle nog niet.
+
+Voor elke release: verhoog `versionCode` en `versionName` in AndroidManifest.xml en de zichtbare versie in app.js, bundel de webassets, bouw met dezelfde sleutel, voer de tests uit en draai `node tools/publish-android-update.mjs`. Stel eventueel `ANDROID_HOME` in op de SDK-map. Dit script controleert APK-versie versus manifest en schrijft APK plus update-JSON met SHA256. Commit en publiceer **beide in dezelfde Pages-deployment**. Publiceer nooit alleen de versie-JSON vóór de APK. Er is geen Firebase-verbruik of betaalde dienst voor deze controle.

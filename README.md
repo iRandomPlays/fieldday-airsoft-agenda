@@ -45,5 +45,7 @@ Standaard GitHub Actions-runners voor een openbare repository hebben geen minute
 
 ## Aangesloten bronnen
 
-GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id) Crimi Events (openbare agenda-API) en Rush Battle Arena (alle evenementkaarten in de paginabron, inclusief latere maanden). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.
+GitHub importeert Airsoft Vets, 3Division (shop en jaaragenda), Area077 (beide opgegeven ticketlijsten, ontdubbeld op event-id), Crimi Events (openbare agenda-API) , Rush Battle Arena (alle evenementkaarten in de paginabron, inclusief latere maanden), Airsoften.be (jaarkalender), Antwerp Airsoft (alle pagina’s van de openbare agenda-API) en Airborne Events (gedateerde ticketproducten en entreevarianten). Meerdaagse evenementen hebben een einddatum. Crimi toont online vanafprijzen en de apart vermelde betaling ter plaatse. Een mislukte bron houdt zijn vorige gegevens; andere bronnen worden wel bijgewerkt. Geannuleerde Crimi-events staan niet in de actieve agenda.
 
+
+Airsoften.be importeert iedere gepubliceerde kalenderdag afzonderlijk. Een vermelding van een terrein zonder datums levert geen verzonnen speeldagen op. Airborne gebruikt het expliciete bronjaar van de bijbehorende terreinagenda of evenementbeschrijving; accessoires en eten tellen niet als entreeticket. Antwerp bewaart de lokale tijden zoals de organisator ze publiceert, ook wanneer de API een afwijkende tijdzone noemt.

@@ -41,7 +41,7 @@ Lokale server alleen voor ontwikkeling op http://127.0.0.1:8787. De online app g
 
 ## Kosten en scope
 
-Standaard GitHub Actions-runners voor een openbare repository hebben geen minutentarief. Opslag, Pages-limieten en voorwaarden blijven gelden. Geen betaalde API gebruikt. Negen organisatoren aangesloten. De calculator is een indicatie voor een priverepository met 2.000 Linux-minuten en niet de gemeten looptijd van tien websites.
+Standaard GitHub Actions-runners voor een openbare repository hebben geen minutentarief. Opslag, Pages-limieten en voorwaarden blijven gelden. Geen betaalde API gebruikt. Dertien organisatoren aangesloten. De calculator is een indicatie voor een priverepository met 2.000 Linux-minuten en niet de gemeten looptijd van tien websites.
 
 ## Aangesloten bronnen
 
@@ -91,3 +91,11 @@ De cache bevat alleen de expliciet opgesomde openbare appbestanden; geen Firebas
 Apple Agenda krijgt een directe HTTPS-link naar een .ics-bestand van het openbare evenement. GitHub maakt deze bestanden iedere import opnieuw met tools/build-calendars.mjs; privéprofielen en groepsdeelnemers komen er niet in. De gebruiker bevestigt zelf de import. Google Agenda en de bestaande .ics-download blijven beschikbaar. Een eenmaal geïmporteerde afspraak wordt niet automatisch bijgewerkt. iOS kan gedeelde links in Safari openen in plaats van de geïnstalleerde webapp; reageren werkt daar ook. Er is geen aparte App Store-app of betaalde dienst toegevoegd.
 
 Automatische tests controleren iOS/iPad-detectie, geïnstalleerde modus, uitnodigingen zonder Android-acties, updatecontroles, onvolledige downloads, cache-isolatie, beginschermassets en openbare kalenderexport. Installatie, WhatsApp-linkopening, delen en daadwerkelijke import in Apple Agenda nog op een echte iPhone testen; hiervoor is geen toestel beschikbaar in deze werkomgeving.
+
+## Nederlandse uitbreiding en organisatorenfilter (1.2.6)
+
+Balls and Arrows (openbaar SkirmInControl-formulier), Copperhead Tactical (alle WooCommerce-agendapagina’s en evenementdetails), Delta Airsoft Events (volledige openbare One.com-productlijst) en Gladiator Sports zijn aangesloten. Delta gebruikt de datum in de productnaam, omdat de URL een oudere datum kan bevatten. Copperhead neemt een ontbrekend jaar alleen over als de agenda één expliciet evenementjaar bevat.
+
+Gladiator publiceert een herhaling in plaats van een gedateerde ticketkalender: elke laatste zondag van de maand. De import berekent alleen de komende 90 dagen en vermeldt nadrukkelijk dat de datum en beschikbaarheid bij de organisator bevestigd moeten worden. Geen beschikbaarheidsclaim op basis van een generiek ticket. Bij bronfouten of onvolledige lijsten blijven eerdere gegevens bewaard.
+
+Onder Filters kun je meerdere organisatoren aanvinken. De selectie geldt voor agenda, kaart en favorieten en blijft lokaal bewaard na opnieuw openen, ook zonder account. Niets aanvinken toont geen evenementen; Alle organisatoren en Filters wissen herstellen alle bronnen, inclusief nieuw toegevoegde bronnen. Favoriete organisatoren blijven een afzonderlijke voorkeur. De desktopagenda gebruikt dezelfde opgeslagen selectie op dezelfde browser-origin. De productie-import blijft uitsluitend op GitHub draaien.

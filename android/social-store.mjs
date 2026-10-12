@@ -1,4 +1,4 @@
-import {getDocFromServer,getDocsFromServer,doc,collection,setDoc,deleteDoc,runTransaction} from 'firebase/firestore';
+import {getDocFromServer,getDocsFromServer,doc,collection,setDoc,deleteDoc,runTransaction,query,where,limit} from 'firebase/firestore';
 import {deleteUser} from 'firebase/auth';
 import {createService} from '../shared/social-service.mjs';
 
@@ -21,6 +21,9 @@ export function firestoreService(db,auth,events){
       for(const row of rows.docs){if(path.startsWith('eventGroups/'))await deleteDoc(ref(`nabvGrants/${row.id}/organizers/${auth.currentUser.uid}`));await deleteDoc(row.ref);}
       if(path.startsWith('users/')){
         // Remove capability pointers as well as the single source of the NABV number.
+        const uid=path.slice(6);
+        while(true){const feedback=await getDocsFromServer(query(collection(db,'feedback'),where('userId','==',uid),limit(20)));if(feedback.empty)break;await Promise.all(feedback.docs.map(row=>deleteDoc(row.ref)));}
+        await deleteDoc(ref('feedbackLimits/'+uid));
         const grants=await getDocsFromServer(collection(db,'nabvGrants',path.slice(6),'organizers'));
         for(const row of grants.docs)await deleteDoc(row.ref);
       }

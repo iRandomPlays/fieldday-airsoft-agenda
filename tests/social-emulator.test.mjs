@@ -76,7 +76,11 @@ test('Spark: real Firebase Auth + Firestore transactions and authorization',{ski
   const updated=(await owner.call('participants',{groupId})).participants[0];assert.equal(updated.nabvNumber,'654321');assert.equal(updated.name,'Guest updated Test');
   await guest.call('respond',{groupId,response:'yes'});
   assert.equal((await owner.call('participants',{groupId})).participants[0].nabvNumber,'');
+  const {feedbackService}=await import('../android/feedback-store.mjs');
+  const feedbackId='c'.repeat(64);await feedbackService(guest.db,guest.auth).send(feedbackId,{category:'idea',subject:'Account wissen',message:'Opruimtest',allowContact:true},{version:'1.2.7',platform:'Web'});
   await guest.call('deleteAccount');
+  assert.equal((await getDocFromServer(doc(other.db,'feedback',feedbackId))).exists(),false);
+
   await other.call('respond',{groupId,response:'yes'});
   await owner.call('revokeGroup',{groupId});
   await assert.rejects(other.call('respond',{groupId,response:'yes'}),{code:'failed-precondition'});
@@ -87,4 +91,45 @@ test('Spark: real Firebase Auth + Firestore transactions and authorization',{ski
   await assert.rejects(owner.call('participants',{groupId}),{code:'not-found'});
   await owner.call('deleteAccount');
  }finally{for(const app of apps){await terminate(getFirestore(app));await deleteApp(app);}}
+});
+
+test('Feedback: serverregels beschermen inzage, toestemming, statussen, spamlimiet en opruimen',{skip:!enabled},async()=>{
+ const {initializeTestEnvironment,assertSucceeds,assertFails}=await import('@firebase/rules-unit-testing');
+ const {doc,getDoc,getDocs,collection,query,where,limit,writeBatch,setDoc,updateDoc,deleteDoc,serverTimestamp,Timestamp}=await import('firebase/firestore');
+ const {feedbackService}=await import('../android/feedback-store.mjs');
+ const env=await initializeTestEnvironment({projectId:'demo-fieldday',firestore:{rules:await readFile('firebase/firestore.rules','utf8')}});
+ try{
+  const identity={uid:'feedback-user',email:'feedback@example.test',emailVerified:true};
+  const user=env.authenticatedContext(identity.uid,{email:identity.email,email_verified:true}).firestore();
+  const other=env.authenticatedContext('feedback-other',{email:'other@example.test',email_verified:true}).firestore();
+  const developer=env.authenticatedContext('feedback-dev',{email:'vincentstijfs@live.nl',email_verified:true}).firestore();
+  const unverifiedDeveloper=env.authenticatedContext('feedback-unverified-dev',{email:'vincentstijfs@live.nl',email_verified:false}).firestore();
+  const unverified=env.authenticatedContext('feedback-unverified',{email:'unverified@example.test',email_verified:false}).firestore(),anon=env.unauthenticatedContext().firestore();
+  const id='f'.repeat(64),next='e'.repeat(64),service=feedbackService(user,{currentUser:identity});
+  const input={category:'bug',subject:'Testonderwerp',message:'Dit is een test.\nTweede regel.',allowContact:false},app={version:'1.2.7',platform:'Android'};
+  await service.send(id,input,app);await service.send(id,input,app);
+  const saved=(await getDoc(doc(user,'feedback',id))).data();assert.equal(saved.contactEmail,'');assert.equal(saved.status,'new');assert.ok(saved.createdAt.toMillis()>0);
+  assert.equal((await getDocs(query(collection(user,'feedback'),where('userId','==',identity.uid),limit(20)))).size,1);
+  for(const db of [other,anon,unverifiedDeveloper]){await assertFails(getDoc(doc(db,'feedback',id)));await assertFails(getDocs(collection(db,'feedback')));}
+  await assertFails(updateDoc(doc(user,'feedback',id),{status:'done',updatedAt:serverTimestamp()}));
+  await assertFails(updateDoc(doc(developer,'feedback',id),{message:'Gewijzigd'}));
+  await assertSucceeds(updateDoc(doc(developer,'feedback',id),{status:'in_progress',updatedAt:serverTimestamp()}));
+  const admin=feedbackService(developer,{currentUser:{uid:'feedback-dev',email:'vincentstijfs@live.nl',emailVerified:true}});
+  assert.equal((await admin.list({status:'in_progress',category:'bug'})).rows.length,1);assert.equal(await admin.countNew(),0);
+  await assert.rejects(service.send(next,input,app));
+  const raw={...saved,userId:'feedback-unverified',createdAt:serverTimestamp(),updatedAt:serverTimestamp()};await assertFails(setDoc(doc(unverified,'feedback',next),raw));
+  await assertFails(setDoc(doc(user,'feedback',next),{...raw,userId:identity.uid,message:'x'.repeat(3001)}));
+  const createRaw=async overrides=>{const batch=writeBatch(user);batch.set(doc(user,'feedback',next),{...saved,status:'new',createdAt:serverTimestamp(),updatedAt:serverTimestamp(),...overrides});batch.set(doc(user,'feedbackLimits',identity.uid),{lastAt:serverTimestamp(),feedbackId:next});return batch.commit();};
+  await env.withSecurityRulesDisabled(ctx=>setDoc(doc(ctx.firestore(),'feedbackLimits',identity.uid),{lastAt:Timestamp.fromMillis(0),feedbackId:id}));
+  for(const overrides of [{userId:'spoofed'},{status:'done'},{category:'injected'},{subject:'   '},{message:'\n\t '},{allowContact:false,contactEmail:identity.email},{allowContact:true,contactEmail:'someoneelse@example.test'},{extra:'forbidden'}])await assertFails(createRaw(overrides));
+  await service.send(next,{...input,allowContact:true},app);assert.equal((await getDoc(doc(user,'feedback',next))).data().contactEmail,identity.email);
+  await assertFails(deleteDoc(doc(user,'feedback',id)));
+  await setDoc(doc(user,'deletingUsers',identity.uid),{at:new Date().toISOString()});
+  await assertSucceeds(deleteDoc(doc(user,'feedback',id)));await assertSucceeds(deleteDoc(doc(user,'feedback',next)));await assertSucceeds(deleteDoc(doc(user,'feedbackLimits',identity.uid)));
+  await assertFails(service.send('d'.repeat(64),input,app));
+  await env.withSecurityRulesDisabled(async ctx=>{const batch=writeBatch(ctx.firestore());for(let i=0;i<25;i++)batch.set(doc(ctx.firestore(),'feedback','9'+String(i).padStart(63,'0')),{...saved,userId:'pagination-user',subject:'Pagina '+i,createdAt:Timestamp.fromMillis(1000+i),status:'new'});await batch.commit();});
+  const first=await admin.list({status:'new',category:'bug'});assert.equal(first.rows.length,20);assert.ok(first.cursor);
+  const second=await admin.list({status:'new',category:'bug',cursor:first.cursor});assert.equal(second.rows.length,5);assert.equal(second.cursor,null);assert.equal(new Set([...first.rows,...second.rows].map(row=>row.id)).size,25);assert.equal(await admin.countNew(),25);
+
+ }finally{await env.cleanup();}
 });

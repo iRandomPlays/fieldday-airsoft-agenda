@@ -91,6 +91,24 @@ service cloud.firestore {
     (owner(gid) && (get(gp(gid)).data.status == 'revoked' || (request.resource.data.response == getAfter(pp(gid,uid)).data.response && request.resource.data.registrationStatus == getAfter(pp(gid,uid)).data.registrationStatus))));
    allow delete: if self(uid) || owner(gid);
   }
+
+  function developer() { return verified() && request.auth.token.email.lower() == 'vincentstijfs@live.nl'; }
+  match /feedbackLimits/{uid} {
+   allow get: if self(uid);
+   allow create, update: if self(uid) && verified() && request.resource.data.keys().hasOnly(['lastAt','feedbackId']) && request.resource.data.lastAt == request.time && token(request.resource.data.feedbackId) && (!exists(/databases/$(database)/documents/feedbackLimits/$(uid)) || request.time >= resource.data.lastAt + duration.value(60,'s')) && getAfter(/databases/$(database)/documents/feedback/$(request.resource.data.feedbackId)).data.userId == uid && getAfter(/databases/$(database)/documents/feedback/$(request.resource.data.feedbackId)).data.createdAt == request.time;
+   allow delete: if self(uid) && deleting(uid);
+  }
+  match /feedback/{id} {
+   function validFeedback(v) {
+    return v.keys().hasAll(['userId','category','subject','message','allowContact','contactEmail','appVersion','platform','status','createdAt','updatedAt']) && v.keys().hasOnly(['userId','category','subject','message','allowContact','contactEmail','appVersion','platform','status','createdAt','updatedAt']) && v.userId == request.auth.uid && v.category in ['bug','idea','other'] && v.subject is string && v.subject.size()>0 && v.subject.size()<=100 && v.subject.matches('(?s).*[^[:space:]].*') && v.message is string && v.message.size()>0 && v.message.size()<=3000 && v.message.matches('(?s).*[^[:space:]].*') && v.allowContact is bool && v.contactEmail is string && (v.allowContact ? v.contactEmail == request.auth.token.email : v.contactEmail == '') && v.appVersion is string && v.appVersion.size()<=30 && v.appVersion.matches('[0-9]+[.][0-9]+[.][0-9]+') && v.platform in ['Android','iPhone / iPad','Web'] && v.status == 'new' && v.createdAt == request.time && v.updatedAt == request.time;
+   }
+   allow get: if developer() || (signed() && (!exists(/databases/$(database)/documents/feedback/$(id)) || resource.data.userId == request.auth.uid));
+   allow list: if developer() || (signed() && resource.data.userId == request.auth.uid && request.query.limit<=50);
+   allow create: if verified() && token(id) && validFeedback(request.resource.data) && getAfter(/databases/$(database)/documents/feedbackLimits/$(request.auth.uid)).data.lastAt == request.time && getAfter(/databases/$(database)/documents/feedbackLimits/$(request.auth.uid)).data.feedbackId == id;
+   allow update: if developer() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt']) && request.resource.data.status in ['new','in_progress','done'] && request.resource.data.updatedAt == request.time;
+   allow delete: if developer() || (self(resource.data.userId) && deleting(request.auth.uid));
+  }
+
   match /{document=**} { allow read, write: if false; }
  }
 }

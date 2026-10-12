@@ -15,7 +15,7 @@ test('Werkelijke sociale UI: login behoudt tekst, netwerkfout behoudt formulier 
  const fakeService={send:async(id,input)=>{calls.push({id,...input});if(fail)throw {code:'unavailable'};if(release)await release;return id;}};
  class FormData {constructor(form){this.rows=Object.entries(form.values||{});}[Symbol.iterator](){return this.rows[Symbol.iterator]();}}
  const context=createContext({feedbackInput,FEEDBACK_CATEGORIES,FEEDBACK_STATUSES,feedbackService:()=>fakeService,authorizeDeveloper,isDeveloper,developerDiagnostics,crypto:webcrypto,FormData,
-  platformInfo:()=>({native:true,label:'Android'}),IOS_INSTALL_HELP:'',document:{body:{append(){}},createElement:()=>dialog,querySelector:s=>s==='#social-body'?body:s==='#social-error'?err:null,addEventListener:(name,fn)=>(handlers[name]??=[]).push(fn)},
+  platformInfo:()=>({native:true,label:'Android'}),IOS_INSTALL_HELP:'',document:{hidden:false,body:{append(){}},createElement:()=>dialog,querySelector:s=>s==='#social-body'?body:s==='#social-error'?err:null,addEventListener:(name,fn)=>(handlers[name]??=[]).push(fn)},
   window:{addEventListener(){}},navigator:{userAgent:'FielddayAndroid'},location:{hash:'',hostname:'appassets.androidplatform.net'},URLSearchParams,
   fetch:async()=>({json:async()=>({enabled:true,firebase:{projectId:'test',apiKey:'test'}})}),initializeApp:()=>({}),getAuth:()=>auth,getFirestore:()=>({}),setPersistence:async()=>{},indexedDBLocalPersistence:{},
   onAuthStateChanged:(_,fn)=>{authChanged=fn;},onSnapshot:()=>()=>{},doc:()=>({}),collection:()=>({}),
@@ -29,6 +29,7 @@ test('Werkelijke sociale UI: login behoudt tekst, netwerkfout behoudt formulier 
  await submit({id:'social-feedback',values:draft});assert.match(body.innerHTML,/Welkom terug/);assert.equal(calls.length,0);
  await submit({id:'social-auth',dataset:{mode:'login'},values:{email:user.email,password:'example'}});
  assert.match(body.innerHTML,/Mijn idee/);assert.match(body.innerHTML,/&lt;private&gt;/);assert.match(body.innerHTML,/name="contact" checked/);
+ context.document.hidden=true;for(const fn of handlers.visibilitychange)fn();assert.match(body.innerHTML,/Verder met mijn feedback/);assert.doesNotMatch(body.innerHTML,/Mijn idee/);context.document.hidden=false;for(const fn of handlers.visibilitychange)fn();await click('feedback');assert.match(body.innerHTML,/Mijn idee/);
  await submit({id:'social-feedback',values:draft});assert.match(body.innerHTML,/Mijn idee/);assert.match(err.textContent,/Geen verbinding/);assert.equal(calls.length,1);
  fail=false;release=new Promise(resolve=>{context.releaseSend=resolve;});
  await submit({id:'social-feedback',values:draft},false);await flush();assert.ok(controls.every(c=>c.disabled));await submit({id:'social-feedback',values:draft},false);await flush();assert.equal(calls.length,2);

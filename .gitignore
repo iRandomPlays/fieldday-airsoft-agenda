@@ -18,3 +18,9 @@ data/firebase-emulators/
 *-debug.log
 firebase/functions/.env*
 .firebase/
+
+# Google Play build and private upload key
+android/play/.gradle/
+android/play/build/
+data/play-signing.properties
+outputs/*.aab

@@ -1,0 +1,45 @@
+plugins { id 'com.android.application' version '9.1.1' }
+
+def signing = new Properties()
+def signingFile = file('../../data/play-signing.properties')
+if (!signingFile.exists()) throw new GradleException('Uploadsignering ontbreekt. Gebruik tools/build-play.ps1.')
+signingFile.withInputStream { signing.load(it) }
+def playManifest = layout.buildDirectory.file('generated/play-manifest/AndroidManifest.xml')
+tasks.register('preparePlayManifest') {
+    inputs.file('../app/src/main/AndroidManifest.xml')
+    outputs.file(playManifest)
+    doLast {
+        def text = file('../app/src/main/AndroidManifest.xml').getText('UTF-8')
+        text = text.replaceAll(/<uses-sdk[^>]*\/>/, '').replaceAll(/ package="[^"]*"/, '').replaceAll(/ android:version(Code|Name)="[^"]*"/, '')
+        def output = playManifest.get().asFile
+        output.parentFile.mkdirs()
+        output.setText(text, 'UTF-8')
+    }
+}
+tasks.named('preBuild') { dependsOn('preparePlayManifest') }
+android {
+    namespace 'nl.fieldday.app'
+    compileSdk 36
+    defaultConfig { applicationId 'nl.fieldday.app'; minSdk 26; targetSdk 36; versionCode 17; versionName '1.2.10' }
+    signingConfigs {
+        upload {
+            storeFile file(signing.getProperty('storeFile'))
+            storePassword signing.getProperty('storePassword')
+            keyAlias signing.getProperty('keyAlias')
+            keyPassword signing.getProperty('keyPassword')
+        }
+    }
+    buildTypes { release { signingConfig signingConfigs.upload; minifyEnabled false } }
+    sourceSets {
+        main {
+            manifest.srcFile playManifest
+            java.srcDirs = ['../app/src/main/java']
+            java.exclude 'nl/fieldday/app/UpdateGate.java', 'nl/fieldday/app/UpdateApkProvider.java', 'nl/fieldday/app/ApkDownload.java', 'nl/fieldday/app/UpdatePolicy.java'
+            res.srcDirs = ['../app/src/main/res']
+            assets.srcDirs = ['../app/src/main/assets']
+        }
+        release { manifest.srcFile '../app/src/play/AndroidManifest.xml'; java.srcDirs = ['../app/src/play/java'] }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_1_8; targetCompatibility JavaVersion.VERSION_1_8 }
+}
+dependencies { implementation 'com.google.android.play:app-update:2.1.0' }

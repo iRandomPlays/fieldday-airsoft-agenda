@@ -30,3 +30,7 @@ Test dit via een door Google Play geïnstalleerde interne testversie; een losse 
 De Play-handtekening verschilt van de bestaande ontwikkelondertekende GitHub-APK. Die APK kan daarom niet rechtstreeks door de Play-versie met dezelfde pakketnaam worden vervangen. Bij de overstap kan verwijderen en opnieuw installeren nodig zijn. Firebase-account en servergegevens blijven beschikbaar na opnieuw inloggen; lokale favorieten en voorkeuren kunnen daarbij verloren gaan. Verwijder je Firebase-account hiervoor niet.
 
 Deze bundel is bedoeld voor een eerste upload naar Intern testen, niet als verklaring dat alle winkel- en beleidsvereisten al zijn afgerond.
+
+## Uploadbestand downloaden
+
+De gecontroleerde eerste Play-bundel (1.2.10, code 17) staat ook op GitHub: [Fieldday-Play-1.2.10.aab downloaden](https://raw.githubusercontent.com/iRandomPlays/fieldday-airsoft-agenda/main/public/downloads/Fieldday-Play-1.2.10.aab). De SHA-256 staat naast het bestand in `public/downloads/Fieldday-Play-1.2.10.aab.sha256`. Alleen de ondertekende bundel wordt gepubliceerd, geen uploadsleutel of wachtwoord. De AAB is voor de Play Console; op telefoons gebruik je de APK of een installatie via Google Play.

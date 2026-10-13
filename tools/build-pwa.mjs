@@ -4,7 +4,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 const root='public/social';
 const hash=value=>createHash('sha256').update(value).digest('hex');
-const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108"><path fill="#F7F5EC" d="M0 0h108v108H0z"/><path fill="#064B4A" d="M25 25h59v12H40v14h35v12H40v24H25z"/><path fill="#8DA49A" d="m61 88 12-19 12 19z"/></svg>';
+const svg=await readFile('android/app/src/main/assets/logo.svg','utf8');
 await mkdir(root+'/icons',{recursive:true});
 for(const size of [180,192,512])await sharp(Buffer.from(svg)).resize(size,size).png().toFile(root+'/icons/'+(size===180?'apple-touch-icon':('icon-'+size))+'.png');
 const manifest={id:'./',name:'Fieldday Airsoft Events',short_name:'Fieldday',lang:'nl',start_url:'./',scope:'./',display:'standalone',background_color:'#f7f5ec',theme_color:'#f7f5ec',icons:[{src:'icons/icon-192.png',sizes:'192x192',type:'image/png',purpose:'any'},{src:'icons/icon-512.png',sizes:'512x512',type:'image/png',purpose:'any'}]};

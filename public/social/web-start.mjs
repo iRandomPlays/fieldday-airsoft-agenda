@@ -1,5 +1,5 @@
 import {fetchWebRelease,ensureWebRelease} from './web-update.mjs';
-const BUILD='4d9556f17f58b4216826ea46669f112d30157f64252081a1df288fd507f5c623';
+const BUILD='a0c74465d2e8aca27fdb429e1881303436bd1028afb6629ecbd535e152072067';
 if(/FielddayAndroid/.test(navigator.userAgent)){
  await import('./app.js');
 }else{

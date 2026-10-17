@@ -320,5 +320,43 @@
       ],
       "profiles": []
     }
-  ]
+  ],
+  "fallbacks": {
+    "NL": {
+      "id": "nabv",
+      "name": "Algemene NABV-reglementen",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "Algemene NABV-reglementen als terugval voor een Nederlands veld zonder volledig gevonden eigen reglement. Dit is geen bevestiging van de specifieke veldregels of de erkenning van deze locatie. Aanvullende veldregels en de briefing blijven van toepassing.",
+      "summary": [
+        "Draag op het speelveld en de testbaan de voorgeschreven, onbeschadigde oogbescherming.",
+        "In de safetyzone zijn replica’s ongeladen, zonder magazijn of BB-houder en waar mogelijk op safe; ook droogschieten is verboden.",
+        "Neem je hit en maak die duidelijk kenbaar. Schieten zonder zicht op het doel (blindfire) is verboden."
+      ],
+      "sources": [
+        {
+          "id": "safety",
+          "title": "NABV Veiligheidsreglement — versie 1 november 2025 (PDF)",
+          "url": "https://www.nabv.nl/app/uploads/2025/10/Veiligheidsreglement-NABV-versie-1-november-2025.pdf",
+          "type": "pdf",
+          "reviewedFingerprint": "a9706b735e20d07659a6348b6ac8e55b9dd6c48ae7edc149c173d58716306684"
+        },
+        {
+          "id": "household",
+          "title": "NABV Huishoudelijk Reglement — versie 1 november 2024 (PDF)",
+          "url": "https://www.nabv.nl/app/uploads/2020/06/20241026-01-NABV-Huishoudelijk-Reglement-NABV-versie-1-november-2024.pdf",
+          "type": "pdf",
+          "reviewedFingerprint": "387338930419721fbe24dc5445844b2019e3a8c741b969c29772ef1fbd57dfac"
+        },
+        {
+          "id": "publications",
+          "title": "Actuele reglementen en aanvullingen op de officiële NABV-website",
+          "url": "https://www.nabv.nl/publicaties/",
+          "type": "html",
+          "reviewedFingerprint": "ee2b39525f4871bf50dc37c706376aec23d906d3f8e0bb8c6b018d5250d463a6"
+        }
+      ],
+      "profiles": []
+    }
+  }
 }

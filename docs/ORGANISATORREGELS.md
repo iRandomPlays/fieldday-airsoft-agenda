@@ -1,5 +1,7 @@
 # Regels per organisator
 
+Nederlandse velden zonder volledig gevonden eigen reglement krijgen daarnaast een duidelijk gelabelde **Algemene NABV-reglementen**-sectie uit `fallbacks.NL` in hetzelfde GitHub-bestand. Deze verwijst naar het vanaf de officiële publicatiepagina gelinkte veiligheidsreglement (1 november 2025), huishoudelijk reglement (1 november 2024) en het actuele publicatieoverzicht. De checker volgt ook deze bronnen. De selectie gebruikt het land van het evenement/de locatie, nooit de nationaliteit of domeinnaam van de organisator. Belgische en onbekende landen krijgen geen NABV-terugval. Gevonden eigen veldregels blijven zichtbaar; een volledig gevonden reglement wordt niet vervangen. De terugval is geen verklaring dat het veld door NABV erkend is. Alleen de nieuwe NABV-fingerprints vastleggen na inhoudelijke review kan met `--record-nabv-fingerprints`; dat keurt geen gewijzigde organisatorbronnen goed.
+
 De 13 organisator-ID’s komen rechtstreeks uit de bestaande app-agenda. `data/organizer-rules.json` in de GitHub-repository bevat korte Nederlandstalige samenvattingen, officiële bronlinks, de datum van inhoudelijke controle en eventueel een specifiek terreinprofiel. Geen volledige reglementen overgenomen. De website toont dit bij ieder bron-evenement in het tabblad **Regels**.
 
 Publieke gegevensbron: https://irandomplays.github.io/fieldday-airsoft-agenda/data/organizer-rules.json

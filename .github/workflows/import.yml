@@ -9,6 +9,8 @@ on:
       - 'public/**'
       - '!public/data/**'
       - 'lib/**'
+      - 'data/organizer-rules.json'
+      - 'tools/build-organizer-rules.mjs'
       - 'tests/**'
       - 'package*.json'
       - 'import.mjs'
@@ -40,6 +42,8 @@ jobs:
           path: data/ocr-models
           key: ocr-english-tesseract-v7
       - run: node --test
+      - name: Officiele regelbronnen controleren
+        run: node tools/build-organizer-rules.mjs
       - name: Websites controleren en agenda opbouwen
         id: import
         continue-on-error: true
@@ -48,7 +52,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/state.json data/ocr-cache.json public/data/events.json
+          git add data/state.json data/ocr-cache.json public/data/events.json public/data/organizer-rules.json
           if ! git diff --cached --quiet; then
             git commit -m 'Update evenementgegevens'
             git push

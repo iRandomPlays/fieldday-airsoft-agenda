@@ -109,3 +109,7 @@ Feedback staat uitsluitend in Firestore, nooit in GitHub of de openbare appcache
 De emulator test inzage, onbevoegde wijzigingen, validatie, toestemming, afkoelperiode, idempotentie en echte accountopruiming. UI-tests controleren tekstbehoud tijdens login en netwerkfouten, dubbele acties en developerweergave. Plaatsing en bediening op een echte Android-telefoon en iPhone moeten nog op toestellen worden gecontroleerd.
 
 Versie 1.2.8 verbergt een open feedbackconcept bij achtergrondgebruik en biedt daarna Verder met mijn feedback; de tekst blijft in het geheugen behouden.
+
+## Organisatorregels
+
+Het aparte openbare bestand https://irandomplays.github.io/fieldday-airsoft-agenda/data/organizer-rules.json bevat bronlinks, korte gecontroleerde samenvattingen en reviewdatums voor alle 13 organisatoren. De bestaande publicatieworkflow controleert deze bronnen op bereikbaarheid en wijzigingen. Dit verandert geen app-accounts of groepsgegevens. Zie docs/ORGANISATORREGELS.md voor bronafbakening, gedeeltelijk gevonden regels, API, herbeoordeling en onderhoud.

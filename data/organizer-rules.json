@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "language": "nl",
+  "notice": "Beknopte selectie uit de officiële regels. Lees vóór deelname de volledige bron en de evenementinformatie; de actuele instructies van de organisator en de briefing zijn leidend.",
+  "organizers": [
+    {
+      "id": "airsoft-vets",
+      "name": "Airsoft Vets",
+      "coverage": "partial",
+      "reviewedAt": "2026-10-17",
+      "note": "Er zijn terreinpagina’s en speciale regels voor The Maze 2 gevonden, maar geen volledig algemeen reglement met concrete joulegrenzen. Vraag ontbrekende regels aan de organisator.",
+      "summary": [],
+      "sources": [
+        {
+          "id": "maze",
+          "title": "Terreinpagina en speciale regels The Maze 2",
+          "url": "https://www.airsoftevenementlimburg.nl/poster-2",
+          "type": "html",
+          "reviewedFingerprint": "4fffbe75822c43d5f056590d5c039ab190b4dbc232960fc20f1220f7ba29da81"
+        },
+        {
+          "id": "trancentral",
+          "title": "Informatie Trancentral",
+          "url": "https://www.airsoftevenementlimburg.nl/poster-4",
+          "type": "html",
+          "reviewedFingerprint": "41cf876e40ac8f8ae327f4dbf5af07468730c1ef08b29fa9472162f46fc7e41b"
+        },
+        {
+          "id": "wolfenstein",
+          "title": "Informatie Wolfenstein",
+          "url": "https://www.airsoftevenementlimburg.nl/kopie-van-poster-4-2",
+          "type": "html",
+          "reviewedFingerprint": "8c4f9c7752ed95e3ee18f1addae8de94fac743c610078728293febad614e9b69"
+        }
+      ],
+      "profiles": [
+        {
+          "label": "The Maze 2",
+          "match": {
+            "sourcePaths": [
+              "/poster-2"
+            ],
+            "titleIncludes": [
+              "the maze 2"
+            ]
+          },
+          "sourceIds": [
+            "maze"
+          ],
+          "summary": [
+            "Open vuur, kampvuren en barbecues op hout of kolen zijn verboden, zowel binnen als buiten.",
+            "Op het hele domein zijn rookgranaten en gloeiend of brandend pyrotechnisch materiaal verboden.",
+            "Tijdens games geldt een rookverbod in bos, respawns en gebouwen; bekijk de bron voor de aangewezen rookplekken en uitzonderingen."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3division",
+      "name": "3Division",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De gepubliceerde voorwaarden bevatten verschillende passages over BB-gewichten. Controleer jouw klasse en eventuele uitzonderingen bij de organisator.",
+      "summary": [
+        "Assault: maximaal 1,2 J en 5 meter schietafstand. DMR: 1,7 J en 15 meter. Bolt-action sniper: 2,3 J en 25 meter, volgens de klassentabel.",
+        "Voor DMR gelden extra eisen aan lengte, optiek, magazijnen en sidearm; HPA vereist een tournament lock.",
+        "Alleen toegelaten biologisch afbreekbare BB’s. In de safety: magazijn eruit, replica veilig maken en geen droogschieten."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officiële replica-, veiligheids- en deelnameregels",
+          "url": "https://3division.eu/algemene-voorwaarden",
+          "type": "html",
+          "reviewedFingerprint": "4f77bde489b48b022afc2b54be4be50c9e3de4752d54d203f444e202bf01a12f"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "area077",
+      "name": "Area077",
+      "coverage": "partial",
+      "reviewedAt": "2026-10-17",
+      "note": "De link naar het deelnamereglement geeft momenteel ‘pagina niet beschikbaar’. Hieronder staan uitsluitend bevestigde punten van de officiële informatiepagina; concrete replica- en BB-limieten zijn niet ingevuld.",
+      "summary": [
+        "In het speelgebied is oogbescherming verplicht; volledige gezichtsbescherming wordt sterk aangeraden.",
+        "Elk airsoft-evenement begint met een verplichte veiligheidsbriefing."
+      ],
+      "sources": [
+        {
+          "id": "info",
+          "title": "Officiële airsoftinformatie Area077",
+          "url": "https://www.area077.nl/nl/start.asp?haid=1",
+          "type": "html",
+          "reviewedFingerprint": "69f94886f38647e7c9a65a73e60e324f2a2182dc46fd1b90007a0b7d59d64141"
+        }
+      ],
+      "unavailableSources": [
+        "https://www.area077.nl/nl/default.asp?Deelnamereglement"
+      ],
+      "profiles": []
+    },
+    {
+      "id": "crimi-events",
+      "name": "Crimi Events",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "Fort Knox, Chambers en Nuketown hebben eigen regels. De locatiekeuze op de officiële regelpagina bepaalt onder meer de joulegrenzen, afstanden en toegestane BB’s; deze zijn niet organisatiebreed gelijkgesteld.",
+      "summary": [
+        "Gekeurde oogbescherming is verplicht op het speelterrein. Volg de marshalls en houd replica’s beveiligd in vuurvrije safezones.",
+        "Deelname vereist registratie en een geldig ticket. Materiaal kan bij aankomst en tijdens de speeldag worden gecontroleerd."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officiële regels per terrein: Fort Knox, Chambers en Nuketown",
+          "url": "https://www.airsoftevents.be/regels/",
+          "type": "html",
+          "reviewedFingerprint": "be549589e272e0176e2db64a483df90267e3c7964cfddb9340e331bfe4ae207d"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "rush-battle-arena",
+      "name": "Rush Battle Arena",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De officiële pagina’s bevatten verschillende beschrijvingen van reguliere, Open-, Classic- en Speed Edition-skirms. Raadpleeg altijd de regels van jouw specifieke evenement; gearregels worden hier niet als universeel gepresenteerd.",
+      "summary": [
+        "Oog- en volledige gezichtsbescherming zijn verplicht in het speelgebied; aanwezigheid bij de veiligheidsbriefing is verplicht.",
+        "In de safetyzone: magazijnen verwijderen, HPA loskoppelen en niet droogschieten.",
+        "De reguliere CQB-regels vermelden 1,2 J, maximaal 0,25 g en semi-auto tot 5 schoten per seconde. Afwijkende evenementregels kunnen van toepassing zijn."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Actuele CQB-regels en uitzonderingen per evenement",
+          "url": "https://www.rushbattlearena.nl/airsofters/rules/",
+          "type": "html",
+          "reviewedFingerprint": "7ec1cff0874815dafa65018900b3e7538e453b6fca53a2cf55dc348a49ce0cef"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "airsoften-be",
+      "name": "Airsoften.be",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "Raadpleeg de volledige bron voor alle klasse-eisen en veiligheidsafstanden.",
+      "summary": [
+        "De huisregels noemen 1,2 J voor AEG, 1,7 J voor DMR en 2,3 J voor sniper. DMR: enkel schot, low-/midcap en herkenbare DMR-configuratie.",
+        "Alleen biologisch afbreekbare BB’s. De veiligheidsbril blijft tijdens het spel en op het speelterrein op.",
+        "De minimumleeftijd is 14 jaar; onder 18 is schriftelijke oudertoestemming nodig. In de safety geen magazijn in de replica en geen droogschieten."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officiële huisregels Airsoften.be",
+          "url": "https://airsoften.be/huisregels/",
+          "type": "html",
+          "reviewedFingerprint": "c70a0365aba379edaa20396999dd2ca91d544608c074af0856a09e1b28e0a029"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "antwerp-airsoft",
+      "name": "Antwerp Airsoft",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De oude Antwerp Airsoft-regelpagina verwijst door naar Belgian Airsoft Association (BAA). De huidige huisregels zijn in de browser gecontroleerd; de briefing en het geboekte terrein blijven leidend.",
+      "summary": [
+        "In het speelveld blijft de veiligheidsbril op; een fullface-masker wordt aangeraden.",
+        "Alleen semi-automatisch spelen met BB’s tot 0,25 gram. Geen droogschieten in de safezone.",
+        "Rookgranaten en flashbangs zijn verboden. Neem je hit en volg de marshalls en terreinspecifieke briefing."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Huidige officiële BAA-huisregels (voorheen Antwerp Airsoft)",
+          "url": "https://belgianairsoft.com/huisregels",
+          "type": "spa-assets",
+          "reviewedFingerprint": "da65227eda2f4501fb17ed7e0cb42b0af055313700d2a86b56985b2a8e9cac25"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "airborne-events",
+      "name": "Airborne Events",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "Lees ook de leeftijdsvoorwaarden en eventuele evenementuitzonderingen in de bron.",
+      "summary": [
+        "Replica’s moeten vóór de skirm de joulecontrole doorlopen: AEG 1,2 J, DMR 1,7 J en sniper 2,3 J. Verstelbare HPA-/CO2-systemen moeten tegen verstellen beveiligd kunnen worden.",
+        "Biologisch afbreekbare BB’s en aanwezigheid bij de veiligheidsbriefing zijn verplicht.",
+        "Gekeurde oogbescherming is verplicht; fullface wordt sterk aangeraden. Geen blindfire of droogschieten in de safezone."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officieel spel- en huisreglement Airborne Events",
+          "url": "https://www.airborne-events.be/algemene-voorwaarden/",
+          "type": "html",
+          "reviewedFingerprint": "56776cb2e8ab49e85a714ecdf6deacae23a49f7e3fcf786665dbac077369ed56"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "unit13",
+      "name": "Unit 13",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De CQB-limieten gelden tenzij Unit 13 voor het specifieke evenement uitdrukkelijk iets anders communiceert. Junior Airsoft heeft aparte deelnamevoorwaarden.",
+      "summary": [
+        "Voor reguliere CQB: maximaal 1,20 J, maximaal 0,25 g en uitsluitend semi-auto/single-shot; burst en full-auto zijn niet toegestaan.",
+        "De verplichte digitale veiligheidsbriefing wordt op locatie na het inchecken gevolgd. Alleen goedgekeurde replica’s mogen het veld op.",
+        "Goedgekeurde oogbescherming is verplicht buiten de safetyzone. Eigen eten en drinken zijn alleen toegestaan als Unit 13 daarmee heeft ingestemd."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officieel algemeen en airsoftreglement Unit 13",
+          "url": "https://unit13.eu/nl/reglement/",
+          "type": "html",
+          "reviewedFingerprint": "1ce853f8108aed76a22c06140e9c67999552e862249ea1af2b98697ab5f3fff1"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "balls-and-arrows",
+      "name": "Balls and Arrows",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De samenvatting betreft de open-skirmveldregels, niet alle voorwaarden voor particuliere groepsuitjes.",
+      "summary": [
+        "Neem je hit, ook bij twijfel; indirecte treffers via bomen en bunkers tellen volgens de veldregels ook mee.",
+        "Blindfire is verboden. Neem een geel veiligheidshesje mee om duidelijk te maken dat je geraakt bent.",
+        "Voor de safetyzone moet je de replica ontladen en op safe zetten. In de safety geen magazijnen in de replica en niet droogschieten."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officiële veldregels Balls and Arrows",
+          "url": "https://ballsandarrows.nl/veldregels",
+          "type": "html",
+          "reviewedFingerprint": "85b83c1776473aed756f4fe0c469bed52d55d774a7d9abb4ee73826c1d846f18"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "gladiator-sports",
+      "name": "Gladiator Sports",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "Het veldreglement is als officiële PDF gepubliceerd. De missie-instructies en briefing bepalen de respawnregels van de dag.",
+      "summary": [
+        "In de safetyzone zijn magazijnen en HPA-adapters in replica’s en droogschieten verboden.",
+        "Maak een hit luid en zichtbaar kenbaar en volg de respawninstructies op het missiesheet.",
+        "Bij ‘NO PLAY’ of ‘BLIND MAN’ wordt het spel stilgelegd: stop met schieten en volg de noodprocedure uit het reglement."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officieel veldreglement Gladiator Airsoft Club (PDF, versie 1.1)",
+          "url": "https://www.gladiator.nl/userfiles/gladiator.nl/files/gac/Veldregelementen_V1.1_GAC.pdf",
+          "type": "pdf",
+          "reviewedFingerprint": "8013f165d549f609993df8b5a6a9911e8c0f606be0a7e858019e2cae5d1a7599"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "copperhead-tactical",
+      "name": "Copperhead Tactical",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De website verwijst nu naar versie 5.4 uit 2026; de oudere versie 4 is niet als actuele bron gebruikt.",
+      "summary": [
+        "De klassentabel noemt assault 1,20 J / 5 m, DMR 1,70 J / 15 m en bolt-action sniper 2,30 J / 25 m. Alle replica’s worden vooraf gecontroleerd.",
+        "HPA vereist een functionerende tournament lock; alleen biologisch afbreekbare BB’s zijn toegestaan.",
+        "Geschikte oogbescherming is verplicht. Deelname vereist inschrijving en de in de voorwaarden genoemde geldige documenten."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Actuele algemene voorwaarden en spelregels Copperhead (PDF, versie 5.4, 2026)",
+          "url": "https://copperheadtactical.eu/wp-content/uploads/ALGEMENE-VOORWAARDEN-V5.4.pdf",
+          "type": "pdf",
+          "reviewedFingerprint": "3dce3eec9c4d3d019cb6c898cdcd36240abe51e6c3a2816c4294656f407522d1"
+        }
+      ],
+      "profiles": []
+    },
+    {
+      "id": "delta-airsoft",
+      "name": "Delta Airsoft Events",
+      "coverage": "verified",
+      "reviewedAt": "2026-10-17",
+      "note": "De briefing bevat aanvullende regels voor shotguns, granaten, obstakels en noodsituaties; lees die vóór deelname.",
+      "summary": [
+        "Maximaal BB-gewicht: 0,25 g. Alleen single shot; geen full-auto, burst of binary triggers. De gepubliceerde ROF-limiet is 10 RPS.",
+        "In de safetyzone: replica op safe, geen magazijn, geen droogschieten en HPA-slangen los.",
+        "Blindfire is verboden. Friendly fire telt als hit; er is geen vaste PANG-regel. Volg de marshalls bij noodsituaties."
+      ],
+      "sources": [
+        {
+          "id": "rules",
+          "title": "Officiële veiligheids- en spelbriefing Delta Airsoft Events",
+          "url": "https://www.deltaairsoft.nl/briefing",
+          "type": "html",
+          "reviewedFingerprint": "59ae0583e0a20a054cc619ffe8feed2a7cf6f7b73c3035b146b0d88565b8b440"
+        }
+      ],
+      "profiles": []
+    }
+  ]
+}

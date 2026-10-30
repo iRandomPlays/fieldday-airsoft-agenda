@@ -75,5 +75,40 @@
     "score": 90,
     "count": 1,
     "text": "DECEMBER 20TE"
+  },
+  "1eaf352608b6b8b9042c97d530ebe6c2b1bfd3f049319de478c83630221c5b8d": {
+    "month": 1,
+    "day": 2,
+    "score": 72,
+    "count": 1,
+    "text": "as JANUARY 2ND\n"
+  },
+  "11b08ec3ebd60bc2da5a0c95c40c860fa0a4c49fdd9d42f7f5bb1af36b6fce82": {
+    "month": 1,
+    "day": 10,
+    "score": 92,
+    "count": 1,
+    "text": "JANUARY 10TH\n"
+  },
+  "8a56293d010c6f02036c25935751a960454a3d9b1ace680db9d598f5f7d2ff7c": {
+    "month": 1,
+    "day": 17,
+    "score": 92,
+    "count": 3,
+    "text": "JANUARY 17TH"
+  },
+  "571b7dcd16445a6ce26192e7a1f067913c93cd0504ad69c660248719ddf806f9": {
+    "month": 1,
+    "day": 24,
+    "score": 93,
+    "count": 2,
+    "text": "JANUARY 24"
+  },
+  "105e0952cbb214d8a20fcfaaecbf59345b936d76bf72a365324e369cd4e35431": {
+    "month": 1,
+    "day": 31,
+    "score": 89,
+    "count": 1,
+    "text": "JANUARY 31ST"
   }
 }

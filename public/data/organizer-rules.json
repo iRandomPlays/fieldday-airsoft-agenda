@@ -17,7 +17,7 @@
           "url": "https://www.airsoftevenementlimburg.nl/poster-2",
           "type": "html",
           "reviewedFingerprint": "4fffbe75822c43d5f056590d5c039ab190b4dbc232960fc20f1220f7ba29da81",
-          "checkedAt": "2026-10-30T23:51:29.391Z",
+          "checkedAt": "2026-10-31T05:49:29.873Z",
           "resolvedUrl": "https://www.airsoftevenementlimburg.nl/poster-2",
           "currentFingerprint": "4fffbe75822c43d5f056590d5c039ab190b4dbc232960fc20f1220f7ba29da81",
           "checkStatus": "ok"
@@ -28,7 +28,7 @@
           "url": "https://www.airsoftevenementlimburg.nl/poster-4",
           "type": "html",
           "reviewedFingerprint": "41cf876e40ac8f8ae327f4dbf5af07468730c1ef08b29fa9472162f46fc7e41b",
-          "checkedAt": "2026-10-30T23:51:29.406Z",
+          "checkedAt": "2026-10-31T05:49:29.884Z",
           "resolvedUrl": "https://www.airsoftevenementlimburg.nl/poster-4",
           "currentFingerprint": "41cf876e40ac8f8ae327f4dbf5af07468730c1ef08b29fa9472162f46fc7e41b",
           "checkStatus": "ok"
@@ -39,7 +39,7 @@
           "url": "https://www.airsoftevenementlimburg.nl/kopie-van-poster-4-2",
           "type": "html",
           "reviewedFingerprint": "8c4f9c7752ed95e3ee18f1addae8de94fac743c610078728293febad614e9b69",
-          "checkedAt": "2026-10-30T23:51:29.408Z",
+          "checkedAt": "2026-10-31T05:49:29.885Z",
           "resolvedUrl": "https://www.airsoftevenementlimburg.nl/kopie-van-poster-4-2",
           "currentFingerprint": "8c4f9c7752ed95e3ee18f1addae8de94fac743c610078728293febad614e9b69",
           "checkStatus": "ok"
@@ -86,7 +86,7 @@
           "url": "https://3division.eu/algemene-voorwaarden",
           "type": "html",
           "reviewedFingerprint": "4f77bde489b48b022afc2b54be4be50c9e3de4752d54d203f444e202bf01a12f",
-          "checkedAt": "2026-10-30T23:51:29.977Z",
+          "checkedAt": "2026-10-31T05:49:30.334Z",
           "resolvedUrl": "https://3division.eu/algemene-voorwaarden",
           "currentFingerprint": "4f77bde489b48b022afc2b54be4be50c9e3de4752d54d203f444e202bf01a12f",
           "checkStatus": "ok"
@@ -112,7 +112,7 @@
           "url": "https://www.area077.nl/nl/start.asp?haid=1",
           "type": "html",
           "reviewedFingerprint": "69f94886f38647e7c9a65a73e60e324f2a2182dc46fd1b90007a0b7d59d64141",
-          "checkedAt": "2026-10-30T23:51:30.746Z",
+          "checkedAt": "2026-10-31T05:49:30.443Z",
           "resolvedUrl": "https://www.area077.nl/nl/start.asp?haid=1",
           "currentFingerprint": "69f94886f38647e7c9a65a73e60e324f2a2182dc46fd1b90007a0b7d59d64141",
           "checkStatus": "ok"
@@ -141,7 +141,7 @@
           "url": "https://www.airsoftevents.be/regels/",
           "type": "html",
           "reviewedFingerprint": "be549589e272e0176e2db64a483df90267e3c7964cfddb9340e331bfe4ae207d",
-          "checkedAt": "2026-10-30T23:51:31.413Z",
+          "checkedAt": "2026-10-31T05:49:30.497Z",
           "resolvedUrl": "https://www.airsoftevents.be/regels/",
           "currentFingerprint": "be549589e272e0176e2db64a483df90267e3c7964cfddb9340e331bfe4ae207d",
           "checkStatus": "ok"
@@ -168,14 +168,13 @@
           "url": "https://www.rushbattlearena.nl/airsofters/rules/",
           "type": "html",
           "reviewedFingerprint": "7ec1cff0874815dafa65018900b3e7538e453b6fca53a2cf55dc348a49ce0cef",
-          "checkedAt": "2026-10-30T23:51:31.939Z",
-          "resolvedUrl": "https://www.rushbattlearena.nl/airsofters/rules/",
-          "currentFingerprint": "7ec1cff0874815dafa65018900b3e7538e453b6fca53a2cf55dc348a49ce0cef",
-          "checkStatus": "ok"
+          "checkedAt": "2026-10-31T05:49:31.275Z",
+          "checkStatus": "unreachable",
+          "checkError": "Bron antwoordt met HTTP 521"
         }
       ],
       "profiles": [],
-      "needsReview": false
+      "needsReview": true
     },
     {
       "id": "airsoften-be",
@@ -195,7 +194,7 @@
           "url": "https://airsoften.be/huisregels/",
           "type": "html",
           "reviewedFingerprint": "c70a0365aba379edaa20396999dd2ca91d544608c074af0856a09e1b28e0a029",
-          "checkedAt": "2026-10-30T23:51:32.476Z",
+          "checkedAt": "2026-10-31T05:49:31.579Z",
           "resolvedUrl": "https://airsoften.be/huisregels/",
           "currentFingerprint": "c70a0365aba379edaa20396999dd2ca91d544608c074af0856a09e1b28e0a029",
           "checkStatus": "ok"
@@ -222,7 +221,7 @@
           "url": "https://belgianairsoft.com/huisregels",
           "type": "spa-assets",
           "reviewedFingerprint": "da65227eda2f4501fb17ed7e0cb42b0af055313700d2a86b56985b2a8e9cac25",
-          "checkedAt": "2026-10-30T23:51:32.622Z",
+          "checkedAt": "2026-10-31T05:49:31.915Z",
           "resolvedUrl": "https://belgianairsoft.com/huisregels",
           "currentFingerprint": "78407042dfb76ea457a07395279388cb3693da822774f32cc3698bbf3681c638",
           "checkStatus": "changed"
@@ -249,7 +248,7 @@
           "url": "https://www.airborne-events.be/algemene-voorwaarden/",
           "type": "html",
           "reviewedFingerprint": "56776cb2e8ab49e85a714ecdf6deacae23a49f7e3fcf786665dbac077369ed56",
-          "checkedAt": "2026-10-30T23:51:32.722Z",
+          "checkedAt": "2026-10-31T05:49:32.147Z",
           "resolvedUrl": "https://www.airborne-events.be/algemene-voorwaarden/",
           "currentFingerprint": "e25acf3d5d18fbf1325dca6932d820068902c33081b5c2fa4cc9b8045406c8cb",
           "checkStatus": "changed"
@@ -276,7 +275,7 @@
           "url": "https://unit13.eu/nl/reglement/",
           "type": "html",
           "reviewedFingerprint": "1ce853f8108aed76a22c06140e9c67999552e862249ea1af2b98697ab5f3fff1",
-          "checkedAt": "2026-10-30T23:51:33.166Z",
+          "checkedAt": "2026-10-31T05:49:32.150Z",
           "resolvedUrl": "https://unit13.eu/nl/reglement/",
           "currentFingerprint": "1ce853f8108aed76a22c06140e9c67999552e862249ea1af2b98697ab5f3fff1",
           "checkStatus": "ok"
@@ -303,7 +302,7 @@
           "url": "https://ballsandarrows.nl/veldregels",
           "type": "html",
           "reviewedFingerprint": "85b83c1776473aed756f4fe0c469bed52d55d774a7d9abb4ee73826c1d846f18",
-          "checkedAt": "2026-10-30T23:51:33.542Z",
+          "checkedAt": "2026-10-31T05:49:33.229Z",
           "resolvedUrl": "https://ballsandarrows.nl/veldregels",
           "currentFingerprint": "85b83c1776473aed756f4fe0c469bed52d55d774a7d9abb4ee73826c1d846f18",
           "checkStatus": "ok"
@@ -330,7 +329,7 @@
           "url": "https://www.gladiator.nl/userfiles/gladiator.nl/files/gac/Veldregelementen_V1.1_GAC.pdf",
           "type": "pdf",
           "reviewedFingerprint": "8013f165d549f609993df8b5a6a9911e8c0f606be0a7e858019e2cae5d1a7599",
-          "checkedAt": "2026-10-30T23:51:33.605Z",
+          "checkedAt": "2026-10-31T05:49:33.239Z",
           "resolvedUrl": "https://www.gladiator.nl/userfiles/gladiator.nl/files/gac/Veldregelementen_V1.1_GAC.pdf",
           "currentFingerprint": "8013f165d549f609993df8b5a6a9911e8c0f606be0a7e858019e2cae5d1a7599",
           "checkStatus": "ok"
@@ -357,7 +356,7 @@
           "url": "https://copperheadtactical.eu/wp-content/uploads/ALGEMENE-VOORWAARDEN-V5.4.pdf",
           "type": "pdf",
           "reviewedFingerprint": "3dce3eec9c4d3d019cb6c898cdcd36240abe51e6c3a2816c4294656f407522d1",
-          "checkedAt": "2026-10-30T23:51:34.106Z",
+          "checkedAt": "2026-10-31T05:49:33.886Z",
           "checkStatus": "unreachable",
           "checkError": "PDF-bron leverde geen PDF."
         }
@@ -383,7 +382,7 @@
           "url": "https://www.deltaairsoft.nl/briefing",
           "type": "html",
           "reviewedFingerprint": "59ae0583e0a20a054cc619ffe8feed2a7cf6f7b73c3035b146b0d88565b8b440",
-          "checkedAt": "2026-10-30T23:51:34.244Z",
+          "checkedAt": "2026-10-31T05:49:34.150Z",
           "resolvedUrl": "https://www.deltaairsoft.nl/briefing",
           "currentFingerprint": "59ae0583e0a20a054cc619ffe8feed2a7cf6f7b73c3035b146b0d88565b8b440",
           "checkStatus": "ok"
@@ -412,7 +411,7 @@
           "url": "https://www.nabv.nl/app/uploads/2025/10/Veiligheidsreglement-NABV-versie-1-november-2025.pdf",
           "type": "pdf",
           "reviewedFingerprint": "a9706b735e20d07659a6348b6ac8e55b9dd6c48ae7edc149c173d58716306684",
-          "checkedAt": "2026-10-30T23:51:34.469Z",
+          "checkedAt": "2026-10-31T05:49:34.665Z",
           "resolvedUrl": "https://www.nabv.nl/app/uploads/2025/10/Veiligheidsreglement-NABV-versie-1-november-2025.pdf",
           "currentFingerprint": "a9706b735e20d07659a6348b6ac8e55b9dd6c48ae7edc149c173d58716306684",
           "checkStatus": "ok"
@@ -423,7 +422,7 @@
           "url": "https://www.nabv.nl/app/uploads/2020/06/20241026-01-NABV-Huishoudelijk-Reglement-NABV-versie-1-november-2024.pdf",
           "type": "pdf",
           "reviewedFingerprint": "387338930419721fbe24dc5445844b2019e3a8c741b969c29772ef1fbd57dfac",
-          "checkedAt": "2026-10-30T23:51:34.653Z",
+          "checkedAt": "2026-10-31T05:49:34.854Z",
           "resolvedUrl": "https://www.nabv.nl/app/uploads/2020/06/20241026-01-NABV-Huishoudelijk-Reglement-NABV-versie-1-november-2024.pdf",
           "currentFingerprint": "387338930419721fbe24dc5445844b2019e3a8c741b969c29772ef1fbd57dfac",
           "checkStatus": "ok"
@@ -434,7 +433,7 @@
           "url": "https://www.nabv.nl/publicaties/",
           "type": "html",
           "reviewedFingerprint": "ee2b39525f4871bf50dc37c706376aec23d906d3f8e0bb8c6b018d5250d463a6",
-          "checkedAt": "2026-10-30T23:51:34.708Z",
+          "checkedAt": "2026-10-31T05:49:35.591Z",
           "resolvedUrl": "https://www.nabv.nl/publicaties/",
           "currentFingerprint": "ee2b39525f4871bf50dc37c706376aec23d906d3f8e0bb8c6b018d5250d463a6",
           "checkStatus": "ok"
@@ -444,5 +443,5 @@
       "needsReview": false
     }
   },
-  "generatedAt": "2026-10-30T23:51:29.390Z"
+  "generatedAt": "2026-10-31T05:49:29.873Z"
 }

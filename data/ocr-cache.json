@@ -110,5 +110,40 @@
     "score": 89,
     "count": 1,
     "text": "JANUARY 31ST"
+  },
+  "ad4c6b62bd4b884197a2d641afa2ae465e3823180fdac5054073d59662761d52": {
+    "month": 2,
+    "day": 7,
+    "score": 92,
+    "count": 2,
+    "text": "FEBRUARY 7TH"
+  },
+  "f1a69ba64fadfc0a0b56c777d36d836b500caa6ca13f89d2ae725e14618bf3d2": {
+    "month": 2,
+    "day": 14,
+    "score": 95,
+    "count": 2,
+    "text": "FEBRUARY 14TH"
+  },
+  "a62ba01856b2328557a490628ada7711cacf3a37f61cdd77c38b85a593a4033c": {
+    "month": 3,
+    "day": 14,
+    "score": 95,
+    "count": 1,
+    "text": "MARCH 14TH"
+  },
+  "85e0b7d20c1f8a040b963d3deaf19ed5ccc54f3f21d568a8c8fa7af2303293f0": {
+    "month": 3,
+    "day": 20,
+    "score": 83,
+    "count": 2,
+    "text": "“MARCH 20TH"
+  },
+  "dd9b10eae14aa4a49f3e2cab8a98777f900cf4dde793368f66d1e72313bf2c71": {
+    "month": 3,
+    "day": 28,
+    "score": 85,
+    "count": 2,
+    "text": "= MARCH 28"
   }
 }
